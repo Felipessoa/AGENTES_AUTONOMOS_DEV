@@ -2,20 +2,26 @@
 
 from dotenv import load_dotenv
 from src.core.orchestrator import Orchestrator
+from src.core.logger import setup_logger # Importa a função de setup
 
 def main():
     """
     Ponto de entrada principal do sistema.
-    Carrega o ambiente e inicia o shell do Orquestrador.
     """
+    # Carrega as variáveis de ambiente do arquivo .env
     load_dotenv()
+    
+    # Configura o sistema de logging para todo o programa
+    setup_logger()
     
     try:
         orchestrator = Orchestrator()
         orchestrator.interactive_shell()
         
     except Exception as e:
-        print(f"Um erro fatal ocorreu na inicialização do sistema: {e}")
+        # Usando o logger para registrar o erro fatal
+        import logging
+        logging.getLogger("main").critical(f"Um erro fatal ocorreu na inicialização do sistema: {e}", exc_info=True)
 
 if __name__ == "__main__":
     main()
