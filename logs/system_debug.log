@@ -14,3 +14,835 @@
 2025-09-09 14:02:34,255 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
 2025-09-09 14:02:49,286 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
 2025-09-09 14:03:04,349 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 14:03:19,385 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 14:03:34,404 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 14:03:49,426 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 14:04:04,435 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 14:04:06,064 - INFO - [Orchestrator] - Plano de desenvolvimento criado com sucesso.
+2025-09-09 14:04:19,457 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 14:04:27,114 - INFO - [Orchestrator] - Backend concluiu a execução do plano.
+2025-09-09 14:04:34,471 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 14:04:49,507 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 14:05:04,525 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 14:05:19,546 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 14:05:34,562 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 14:05:49,270 - INFO - [Orchestrator] - Plano de desenvolvimento criado com sucesso.
+2025-09-09 14:05:49,586 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 14:06:04,602 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 14:06:10,785 - INFO - [Orchestrator] - Backend concluiu a execução do plano.
+2025-09-09 14:06:19,657 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 14:06:29,479 - INFO - [Orchestrator] - Aguardando threads de segundo plano finalizarem...
+2025-09-09 14:06:29,679 - INFO - [Auditor] - Monitoramento encerrado.
+2025-09-09 14:10:31,335 - INFO - [Orchestrator] - Inicializando o Orquestrador...
+2025-09-09 14:10:31,335 - INFO - [Orchestrator] - Agentes carregados: ['architect', 'backend', 'auditor', 'git', 'executor', 'frontend']
+2025-09-09 14:10:31,335 - INFO - [Orchestrator] - Iniciando agentes de segundo plano...
+2025-09-09 14:10:31,336 - INFO - [Auditor] - Iniciando monitoramento...
+2025-09-09 14:10:31,336 - INFO - [Orchestrator] - Agente 'Auditor' está rodando em segundo plano.
+2025-09-09 14:10:31,337 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 14:10:46,349 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 14:11:01,362 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 14:11:16,400 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 14:11:31,412 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 14:11:46,458 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 14:12:01,470 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 14:12:16,502 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 14:12:26,534 - INFO - [Orchestrator] - Aguardando threads de segundo plano finalizarem...
+2025-09-09 14:12:27,514 - INFO - [Auditor] - Monitoramento encerrado.
+2025-09-09 14:12:29,411 - INFO - [Orchestrator] - Inicializando o Orquestrador...
+2025-09-09 14:12:29,412 - INFO - [Orchestrator] - Agentes carregados: ['architect', 'backend', 'auditor', 'git', 'executor', 'frontend']
+2025-09-09 14:12:29,412 - INFO - [Orchestrator] - Iniciando agentes de segundo plano...
+2025-09-09 14:12:29,412 - INFO - [Auditor] - Iniciando monitoramento...
+2025-09-09 14:12:29,412 - INFO - [Orchestrator] - Agente 'Auditor' está rodando em segundo plano.
+2025-09-09 14:12:29,412 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 14:12:39,596 - INFO - [FrontendDev] - Recebida tarefa de design: 'uma página de login simples e centralizada. Deve t...'
+2025-09-09 14:12:44,435 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 14:12:59,458 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 14:13:03,290 - INFO - [FrontendDev] - Código de frontend gerado e salvo em: workspace/output/frontend/index.html
+2025-09-09 14:13:14,490 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 14:13:29,511 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 14:13:44,529 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 14:13:59,571 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 14:14:14,585 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 14:14:29,646 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 14:14:44,660 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 14:14:59,711 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 14:15:14,722 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 14:15:29,768 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 14:15:44,783 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 14:15:59,818 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 14:16:07,567 - INFO - [FrontendDev] - Recebida tarefa de design: 'uma página de login simples e centralizada. Deve t...'
+2025-09-09 14:16:14,836 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 14:16:28,150 - INFO - [FrontendDev] - Código de frontend gerado e salvo em: workspace/output/frontend/index.html
+2025-09-09 14:16:29,859 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 14:16:44,881 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 14:16:59,899 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 14:17:14,937 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 14:17:29,952 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 14:17:45,001 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 14:18:00,016 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 14:18:15,070 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 14:18:30,085 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 14:18:45,137 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 14:19:00,151 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 14:19:15,194 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 14:19:30,208 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 14:19:45,249 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 14:20:00,268 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 14:20:15,284 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 14:20:30,302 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 14:20:45,329 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 14:21:00,368 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 14:21:15,385 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 14:21:30,428 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 14:21:45,445 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 14:22:00,486 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 14:22:15,500 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 14:22:30,534 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 14:22:36,807 - INFO - [Orchestrator] - Plano de desenvolvimento criado com sucesso.
+2025-09-09 14:22:45,546 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 14:22:48,471 - INFO - [Orchestrator] - Backend concluiu a execução do plano.
+2025-09-09 14:23:00,568 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 14:23:15,586 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 14:23:25,298 - INFO - [Orchestrator] - Plano de desenvolvimento criado com sucesso.
+2025-09-09 14:23:30,607 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 14:23:37,060 - INFO - [Orchestrator] - Backend concluiu a execução do plano.
+2025-09-09 14:23:45,622 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 14:23:48,881 - INFO - [Orchestrator] - Aguardando threads de segundo plano finalizarem...
+2025-09-09 14:23:49,625 - INFO - [Auditor] - Monitoramento encerrado.
+2025-09-09 14:27:57,442 - INFO - [Orchestrator] - Inicializando o Orquestrador...
+2025-09-09 14:27:57,444 - INFO - [Orchestrator] - Agentes carregados: ['architect', 'backend', 'auditor', 'git', 'executor', 'frontend']
+2025-09-09 14:27:57,444 - INFO - [Orchestrator] - Iniciando agentes de segundo plano...
+2025-09-09 14:27:57,444 - INFO - [Auditor] - Iniciando monitoramento...
+2025-09-09 14:27:57,444 - INFO - [Orchestrator] - Agente 'Auditor' está rodando em segundo plano.
+2025-09-09 14:27:57,445 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 14:28:12,467 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 14:28:18,635 - INFO - [Executor] - Recebido pedido para executar comando: 'sudo apt-get update'
+2025-09-09 14:28:18,635 - DEBUG - [SecurityAgent] - Analisando comando: 'sudo apt-get update'
+2025-09-09 14:28:18,635 - WARNING - [SecurityAgent] - Bloqueado comando perigoso: 'sudo apt-get update'. Motivo: Comando perigoso detectado (padrão: 'sudo').
+2025-09-09 14:28:18,635 - WARNING - [Executor] - Execução do comando 'sudo apt-get update' bloqueada. Motivo: Comando perigoso detectado (padrão: 'sudo').
+2025-09-09 14:28:27,484 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 14:28:42,514 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 14:28:57,524 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 14:29:12,542 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 14:29:21,829 - INFO - [Orchestrator] - Plano de desenvolvimento criado com sucesso.
+2025-09-09 14:29:27,553 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 14:29:37,347 - INFO - [Orchestrator] - Backend concluiu a execução do plano.
+2025-09-09 14:29:42,577 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 14:29:57,588 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 14:30:12,617 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 14:30:21,707 - INFO - [Orchestrator] - Plano de desenvolvimento criado com sucesso.
+2025-09-09 14:30:27,633 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 14:30:38,639 - INFO - [Orchestrator] - Backend concluiu a execução do plano.
+2025-09-09 14:30:42,651 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 14:30:57,670 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 14:31:12,685 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 14:31:27,703 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 14:31:42,717 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 14:31:57,758 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 14:32:12,769 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 14:32:27,806 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 14:32:42,821 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 14:32:57,836 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 14:33:12,851 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 14:33:27,906 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 14:33:42,939 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 14:33:57,955 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 14:34:12,985 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 14:34:28,012 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 14:34:43,027 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 14:34:58,081 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 14:35:13,095 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 14:35:28,117 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 14:35:43,133 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 14:35:58,160 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 14:36:13,173 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 14:36:28,206 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 14:36:43,219 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 14:36:58,257 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 14:37:13,272 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 14:37:28,311 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 14:37:43,329 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 14:37:58,341 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 14:38:13,363 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 14:38:28,378 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 14:38:43,432 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 14:38:58,446 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 14:39:13,470 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 14:39:28,486 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 14:39:43,528 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 14:39:58,543 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 14:40:13,563 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 14:40:28,579 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 14:40:43,600 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 14:40:44,051 - INFO - [Orchestrator] - Aguardando threads de segundo plano finalizarem...
+2025-09-09 14:40:44,602 - INFO - [Auditor] - Monitoramento encerrado.
+2025-09-09 14:46:53,961 - INFO - [Orchestrator] - Inicializando o Orquestrador...
+2025-09-09 14:46:53,963 - DEBUG - [Compiler] - Verificando instalação do PyInstaller...
+2025-09-09 14:46:54,340 - INFO - [Compiler] - PyInstaller não encontrado. Instalando...
+2025-09-09 14:46:54,341 - INFO - [Executor] - Recebido pedido para executar comando: 'pip install pyinstaller'
+2025-09-09 14:46:54,341 - DEBUG - [SecurityAgent] - Analisando comando: 'pip install pyinstaller'
+2025-09-09 14:46:54,341 - DEBUG - [SecurityAgent] - Comando aprovado como seguro.
+2025-09-09 14:46:54,341 - INFO - [Executor] - Comando aprovado. Executando: 'pip install pyinstaller'
+2025-09-09 14:46:56,825 - INFO - [Orchestrator] - Agentes carregados: ['architect', 'backend', 'auditor', 'git', 'executor', 'frontend', 'compiler']
+2025-09-09 14:46:56,825 - INFO - [Orchestrator] - Iniciando agentes de segundo plano...
+2025-09-09 14:46:56,825 - INFO - [Auditor] - Iniciando monitoramento...
+2025-09-09 14:46:56,826 - INFO - [Orchestrator] - Agente 'Auditor' está rodando em segundo plano.
+2025-09-09 14:46:56,827 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 14:47:11,847 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 14:47:26,914 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 14:47:41,936 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 14:47:57,007 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 14:48:12,027 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 14:48:27,064 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 14:48:42,089 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 14:48:57,106 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 14:49:12,134 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 14:49:27,150 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 14:49:42,175 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 14:49:57,189 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 14:50:12,228 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 14:50:27,241 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 14:50:42,290 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 14:50:57,299 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 14:51:12,317 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 14:51:27,335 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 14:51:42,358 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 14:51:57,383 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 14:52:12,402 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 14:52:27,421 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 14:52:42,437 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 14:52:57,494 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 14:53:12,508 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 14:53:13,725 - INFO - [Orchestrator] - Aguardando threads de segundo plano finalizarem...
+2025-09-09 14:53:14,510 - INFO - [Auditor] - Monitoramento encerrado.
+2025-09-09 14:53:17,029 - INFO - [Orchestrator] - Inicializando o Orquestrador...
+2025-09-09 14:53:17,030 - DEBUG - [Compiler] - Verificando instalação do PyInstaller...
+2025-09-09 14:53:17,426 - DEBUG - [Compiler] - PyInstaller já está instalado.
+2025-09-09 14:53:17,426 - INFO - [Orchestrator] - Agentes carregados: ['architect', 'backend', 'auditor', 'git', 'executor', 'frontend', 'compiler']
+2025-09-09 14:53:17,426 - INFO - [Orchestrator] - Iniciando agentes de segundo plano...
+2025-09-09 14:53:17,426 - INFO - [Auditor] - Iniciando monitoramento...
+2025-09-09 14:53:17,426 - INFO - [Orchestrator] - Agente 'Auditor' está rodando em segundo plano.
+2025-09-09 14:53:17,427 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 14:53:32,463 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 14:53:47,477 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 14:54:02,547 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 14:54:17,562 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 14:54:28,990 - INFO - [Arquiteto] - Planejando a MODIFICAÇÃO de: src/agents/git_agent.py
+2025-09-09 14:54:28,990 - DEBUG - [Arquiteto] - Lido com sucesso o conteúdo de src/agents/git_agent.py
+2025-09-09 14:54:32,609 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 14:54:43,682 - INFO - [Arquiteto] - Plano de modificação para src/agents/git_agent.py gerado com sucesso.
+2025-09-09 14:54:43,684 - INFO - [Orchestrator] - Plano de modificação criado para src/agents/git_agent.py.
+2025-09-09 14:54:47,624 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 14:55:02,692 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 14:55:17,706 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 14:55:32,784 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 14:55:47,798 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 14:55:54,967 - INFO - [Orchestrator] - Backend concluiu a aplicação da modificação.
+2025-09-09 14:56:02,826 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 14:56:17,845 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 14:56:32,896 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 14:56:47,926 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 14:57:02,957 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 14:57:17,984 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 14:57:32,998 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 14:57:48,032 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 14:58:03,049 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 14:58:18,067 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 14:58:33,082 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 14:58:48,102 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 14:59:03,117 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 14:59:18,167 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 14:59:33,181 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 14:59:48,211 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 15:00:03,226 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 15:00:18,246 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 15:00:33,262 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 15:00:48,277 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 15:01:03,300 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 15:01:06,703 - INFO - [Arquiteto] - Planejando a CRIAÇÃO de: crie um novo agente chamado PromptEngineerAgent no...
+2025-09-09 15:01:18,309 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 15:01:33,109 - INFO - [Arquiteto] - Plano de criação gerado com sucesso.
+2025-09-09 15:01:33,110 - INFO - [Orchestrator] - Plano de criação gerado com sucesso.
+2025-09-09 15:01:33,329 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 15:01:42,352 - INFO - [Orchestrator] - Backend concluiu a execução do plano de criação.
+2025-09-09 15:01:48,344 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 15:02:03,375 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 15:02:13,673 - INFO - [Arquiteto] - Planejando a MODIFICAÇÃO de: src/agents/prompt_engineer_agent.py
+2025-09-09 15:02:13,673 - DEBUG - [Arquiteto] - Lido com sucesso o conteúdo de src/agents/prompt_engineer_agent.py
+2025-09-09 15:02:18,386 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 15:02:33,404 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 15:02:43,998 - INFO - [Arquiteto] - Plano de modificação para src/agents/prompt_engineer_agent.py gerado com sucesso.
+2025-09-09 15:02:43,998 - INFO - [Orchestrator] - Plano de modificação criado para src/agents/prompt_engineer_agent.py.
+2025-09-09 15:02:48,415 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 15:03:02,887 - INFO - [Orchestrator] - Backend concluiu a aplicação da modificação.
+2025-09-09 15:03:03,469 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 15:03:18,483 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 15:03:33,506 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 15:03:48,521 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 15:04:03,537 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 15:04:18,556 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 15:04:33,570 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 15:04:48,617 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 15:05:03,633 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 15:05:15,776 - INFO - [Orchestrator] - Aguardando threads de segundo plano finalizarem...
+2025-09-09 15:05:16,649 - INFO - [Auditor] - Monitoramento encerrado.
+2025-09-09 15:12:12,530 - INFO - [Orchestrator] - Inicializando o Orquestrador...
+2025-09-09 15:12:12,531 - DEBUG - [Compiler] - Verificando instalação do PyInstaller...
+2025-09-09 15:12:12,947 - DEBUG - [Compiler] - PyInstaller já está instalado.
+2025-09-09 15:12:12,947 - INFO - [Orchestrator] - Agentes carregados: ['architect', 'backend', 'auditor', 'git', 'executor', 'frontend', 'compiler', 'prompt_engineer']
+2025-09-09 15:12:12,948 - INFO - [Orchestrator] - Iniciando agentes de segundo plano...
+2025-09-09 15:12:12,948 - INFO - [Auditor] - Iniciando monitoramento...
+2025-09-09 15:12:12,948 - INFO - [Orchestrator] - Agente 'Auditor' está rodando em segundo plano.
+2025-09-09 15:12:12,948 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 15:12:27,971 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 15:12:42,984 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 15:12:45,084 - INFO - [Orchestrator] - Aguardando threads de segundo plano finalizarem...
+2025-09-09 15:12:45,985 - INFO - [Auditor] - Monitoramento encerrado.
+2025-09-09 15:37:16,391 - INFO - [Orchestrator] - Inicializando o Orquestrador...
+2025-09-09 15:37:16,392 - DEBUG - [Compiler] - Verificando instalação do PyInstaller...
+2025-09-09 15:37:16,706 - DEBUG - [Compiler] - PyInstaller já está instalado.
+2025-09-09 15:37:16,706 - INFO - [Orchestrator] - Agentes carregados: ['architect', 'backend', 'auditor', 'git', 'executor', 'frontend', 'compiler', 'prompt_engineer']
+2025-09-09 15:37:16,707 - INFO - [Orchestrator] - Iniciando agentes de segundo plano...
+2025-09-09 15:37:16,707 - INFO - [Auditor] - Iniciando monitoramento...
+2025-09-09 15:37:16,707 - INFO - [Orchestrator] - Agente 'Auditor' está rodando em segundo plano.
+2025-09-09 15:37:16,708 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 15:37:31,718 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 15:37:46,744 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 15:38:01,758 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 15:38:16,770 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 15:38:31,794 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 15:38:46,809 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 15:39:01,886 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 15:39:16,907 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 15:39:31,969 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 15:39:46,997 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 15:40:02,038 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 15:40:05,005 - INFO - [Orchestrator] - Aguardando threads de segundo plano finalizarem...
+2025-09-09 15:40:05,047 - INFO - [Auditor] - Monitoramento encerrado.
+2025-09-09 15:40:07,128 - INFO - [Orchestrator] - Inicializando o Orquestrador...
+2025-09-09 15:40:07,129 - DEBUG - [Compiler] - Verificando instalação do PyInstaller...
+2025-09-09 15:40:07,458 - DEBUG - [Compiler] - PyInstaller já está instalado.
+2025-09-09 15:40:07,458 - INFO - [Orchestrator] - Agentes carregados: ['architect', 'backend', 'auditor', 'git', 'executor', 'frontend', 'compiler', 'prompt_engineer']
+2025-09-09 15:40:07,458 - INFO - [Orchestrator] - Iniciando agentes de segundo plano...
+2025-09-09 15:40:07,458 - INFO - [Auditor] - Iniciando monitoramento...
+2025-09-09 15:40:07,458 - INFO - [Orchestrator] - Agente 'Auditor' está rodando em segundo plano.
+2025-09-09 15:40:07,459 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 15:40:22,470 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 15:40:37,499 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 15:40:52,516 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 15:41:07,540 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 15:41:22,565 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 15:41:37,585 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 15:41:52,617 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 15:42:07,633 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 15:42:22,676 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 15:42:57,937 - INFO - [Orchestrator] - Inicializando o Orquestrador...
+2025-09-09 15:42:57,938 - DEBUG - [Compiler] - Verificando instalação do PyInstaller...
+2025-09-09 15:42:58,411 - DEBUG - [Compiler] - PyInstaller já está instalado.
+2025-09-09 15:42:58,412 - INFO - [Orchestrator] - Agentes carregados: ['architect', 'backend', 'auditor', 'git', 'executor', 'frontend', 'compiler', 'prompt_engineer']
+2025-09-09 15:42:58,412 - INFO - [Orchestrator] - Iniciando agentes de segundo plano...
+2025-09-09 15:42:58,412 - INFO - [Auditor] - Iniciando monitoramento...
+2025-09-09 15:42:58,412 - INFO - [Orchestrator] - Agente 'Auditor' está rodando em segundo plano.
+2025-09-09 15:42:58,414 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 15:43:13,436 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 15:43:13,453 - DEBUG - [PromptEngineer] - Otimizando prompt de criação para: 'um programa para teste onde eu tenha que conseguir...'
+2025-09-09 15:43:13,453 - INFO - [Arquiteto] - Recebido prompt otimizado para criação...
+2025-09-09 15:43:18,655 - INFO - [Arquiteto] - Plano de criação gerado com sucesso.
+2025-09-09 15:43:18,655 - INFO - [Orchestrator] - Plano de criação gerado com sucesso.
+2025-09-09 15:43:18,655 - ERROR - [Orchestrator] - Falha na construção: 'BackendAgent' object has no attribute 'read_from_workspace'
+Traceback (most recent call last):
+  File "/home/felipessoa/AGENTES_AUTONOMOS_DEV/src/core/orchestrator.py", line 64, in execute_creation_task
+    backend_dev.run()
+  File "/home/felipessoa/AGENTES_AUTONOMOS_DEV/src/agents/backend_agent.py", line 146, in run
+    development_plan = self.read_from_workspace('plan.md')
+AttributeError: 'BackendAgent' object has no attribute 'read_from_workspace'
+2025-09-09 15:43:28,471 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 15:43:43,487 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 15:43:58,558 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 15:44:13,574 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 15:44:28,631 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 15:44:43,648 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 15:44:58,710 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 15:45:13,726 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 15:45:28,779 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 15:45:43,799 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 15:45:58,845 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 15:46:13,876 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 15:46:28,893 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 15:46:43,914 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 15:46:58,927 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 15:47:13,948 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 15:47:28,961 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 15:47:43,981 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 15:47:58,995 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 15:48:14,010 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 15:48:29,034 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 15:48:44,050 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 15:48:59,070 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 15:49:14,086 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 15:49:29,106 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 15:49:44,121 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 15:49:55,597 - INFO - [Orchestrator] - Aguardando threads de segundo plano finalizarem...
+2025-09-09 15:49:56,136 - INFO - [Auditor] - Monitoramento encerrado.
+2025-09-09 15:50:00,144 - INFO - [Orchestrator] - Inicializando o Orquestrador...
+2025-09-09 15:50:00,145 - DEBUG - [Compiler] - Verificando instalação do PyInstaller...
+2025-09-09 15:50:00,463 - DEBUG - [Compiler] - PyInstaller já está instalado.
+2025-09-09 15:50:00,463 - INFO - [Orchestrator] - Agentes carregados: ['architect', 'backend', 'auditor', 'git', 'executor', 'frontend', 'compiler', 'prompt_engineer']
+2025-09-09 15:50:00,463 - INFO - [Orchestrator] - Iniciando agentes de segundo plano...
+2025-09-09 15:50:00,463 - INFO - [Auditor] - Iniciando monitoramento...
+2025-09-09 15:50:00,463 - INFO - [Orchestrator] - Agente 'Auditor' está rodando em segundo plano.
+2025-09-09 15:50:00,464 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 15:50:15,481 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 15:50:30,513 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 15:50:43,802 - INFO - [Orchestrator] - Inicializando o Orquestrador...
+2025-09-09 15:50:43,802 - DEBUG - [Compiler] - Verificando instalação do PyInstaller...
+2025-09-09 15:50:44,103 - DEBUG - [Compiler] - PyInstaller já está instalado.
+2025-09-09 15:50:44,103 - INFO - [Orchestrator] - Agentes carregados: ['architect', 'backend', 'auditor', 'git', 'executor', 'frontend', 'compiler', 'prompt_engineer']
+2025-09-09 15:50:44,103 - INFO - [Orchestrator] - Iniciando agentes de segundo plano...
+2025-09-09 15:50:44,104 - INFO - [Auditor] - Iniciando monitoramento...
+2025-09-09 15:50:44,104 - INFO - [Orchestrator] - Agente 'Auditor' está rodando em segundo plano.
+2025-09-09 15:50:44,104 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 15:50:59,119 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 15:51:00,753 - DEBUG - [PromptEngineer] - Analisando intenção do usuário: 'crie um programa para teste onde eu tenha que conseguir mover segurando o botão esquerdo do mouse uma circulo por uma tela branca, criei todos arquivos deste projeto teste'
+2025-09-09 15:51:02,183 - INFO - [Orchestrator] - Intenção detectada: BUILD, Parâmetros: {'description': 'um programa para teste onde eu consiga mover segurando o botão esquerdo do mouse um círculo por uma tela branca'}
+2025-09-09 15:51:02,183 - DEBUG - [PromptEngineer] - Otimizando prompt de criação para: 'um programa para teste onde eu consiga mover segur...'
+2025-09-09 15:51:02,183 - INFO - [Arquiteto] - Recebido prompt otimizado para criação...
+2025-09-09 15:51:08,085 - INFO - [Arquiteto] - Plano de criação gerado com sucesso.
+2025-09-09 15:51:08,085 - INFO - [Orchestrator] - Plano de criação gerado com sucesso.
+2025-09-09 15:51:08,085 - ERROR - [Orchestrator] - Falha na construção: 'BackendAgent' object has no attribute 'read_from_workspace'
+Traceback (most recent call last):
+  File "/home/felipessoa/AGENTES_AUTONOMOS_DEV/src/core/orchestrator.py", line 65, in execute_creation_task
+    backend_dev.run()
+  File "/home/felipessoa/AGENTES_AUTONOMOS_DEV/src/agents/backend_agent.py", line 146, in run
+    development_plan = self.read_from_workspace('plan.md')
+AttributeError: 'BackendAgent' object has no attribute 'read_from_workspace'
+2025-09-09 15:51:14,146 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 15:51:29,161 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 15:51:44,204 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 15:51:59,217 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 15:52:14,249 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 15:52:29,262 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 15:52:44,290 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 15:52:59,306 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 15:53:14,333 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 15:53:29,345 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 15:53:44,368 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 15:53:59,390 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 15:54:14,409 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 15:54:29,441 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 15:54:43,568 - INFO - [Orchestrator] - Aguardando threads de segundo plano finalizarem...
+2025-09-09 15:54:44,448 - INFO - [Auditor] - Monitoramento encerrado.
+2025-09-09 15:56:08,753 - INFO - [Orchestrator] - Inicializando o Orquestrador...
+2025-09-09 15:56:08,753 - INFO - [BackendDev] - Operando no diretório raiz: '/home/felipessoa/AGENTES_AUTONOMOS_DEV'
+2025-09-09 15:56:08,753 - DEBUG - [Compiler] - Verificando instalação do PyInstaller...
+2025-09-09 15:56:09,068 - DEBUG - [Compiler] - PyInstaller já está instalado.
+2025-09-09 15:56:09,068 - INFO - [Orchestrator] - Agentes carregados: ['architect', 'backend', 'auditor', 'git', 'executor', 'frontend', 'compiler', 'prompt_engineer']
+2025-09-09 15:56:09,068 - INFO - [Orchestrator] - Iniciando agentes de segundo plano...
+2025-09-09 15:56:09,068 - INFO - [Auditor] - Iniciando monitoramento...
+2025-09-09 15:56:09,069 - INFO - [Orchestrator] - Agente 'Auditor' está rodando em segundo plano.
+2025-09-09 15:56:09,069 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 15:56:24,119 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 15:56:27,053 - DEBUG - [PromptEngineer] - Analisando intenção do usuário: 'crie um programa para teste onde eu tenha que conseguir mover segurando o botão esquerdo do mouse um círculo por uma tela branca, criando todos os arquivos necessários para este projeto'
+2025-09-09 15:56:28,243 - INFO - [Orchestrator] - Intenção detectada: BUILD, Parâmetros: {'description': 'crie um programa para teste onde eu tenha que conseguir mover segurando o botão esquerdo do mouse um círculo por uma tela branca, criando todos os arquivos necessários para este projeto'}
+2025-09-09 15:56:28,243 - DEBUG - [PromptEngineer] - Otimizando prompt de criação para: 'crie um programa para teste onde eu tenha que cons...'
+2025-09-09 15:56:28,243 - INFO - [Arquiteto] - Recebido prompt otimizado para criação...
+2025-09-09 15:56:33,493 - INFO - [Arquiteto] - Plano de criação gerado com sucesso.
+2025-09-09 15:56:33,493 - INFO - [Orchestrator] - Plano de criação gerado com sucesso.
+2025-09-09 15:56:33,493 - INFO - [BackendDev] - Agente de Backend ativado (Trabalhando em: /home/felipessoa/AGENTES_AUTONOMOS_DEV)
+2025-09-09 15:56:33,493 - ERROR - [Orchestrator] - Falha na construção: 'BackendAgent' object has no attribute 'read_from_workspace'
+Traceback (most recent call last):
+  File "/home/felipessoa/AGENTES_AUTONOMOS_DEV/src/core/orchestrator.py", line 65, in execute_creation_task
+    backend_dev.run()
+  File "/home/felipessoa/AGENTES_AUTONOMOS_DEV/src/agents/backend_agent.py", line 112, in run
+    development_plan = self.read_from_workspace('plan.md')
+AttributeError: 'BackendAgent' object has no attribute 'read_from_workspace'
+2025-09-09 15:56:39,145 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 15:56:54,159 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 15:57:09,183 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 15:57:24,197 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 15:57:39,219 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 15:57:54,231 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 15:58:09,246 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 15:58:24,258 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 15:58:39,312 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 15:58:54,328 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 15:59:09,384 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 15:59:24,403 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 15:59:39,447 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 15:59:51,649 - DEBUG - [PromptEngineer] - Analisando intenção do usuário: 'rm src/agents/base_agent.py'
+2025-09-09 15:59:52,307 - INFO - [Orchestrator] - Intenção detectada: UNKNOWN, Parâmetros: {}
+2025-09-09 15:59:54,470 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 15:59:57,660 - INFO - [Orchestrator] - Aguardando threads de segundo plano finalizarem...
+2025-09-09 15:59:58,474 - INFO - [Auditor] - Monitoramento encerrado.
+2025-09-09 16:01:10,118 - INFO - [Orchestrator] - Inicializando o Orquestrador...
+2025-09-09 16:01:10,118 - INFO - [BackendDev] - Operando no diretório raiz: '/home/felipessoa/AGENTES_AUTONOMOS_DEV'
+2025-09-09 16:01:10,118 - DEBUG - [Compiler] - Verificando instalação do PyInstaller...
+2025-09-09 16:01:10,426 - DEBUG - [Compiler] - PyInstaller já está instalado.
+2025-09-09 16:01:10,427 - INFO - [Orchestrator] - Agentes carregados: ['architect', 'backend', 'auditor', 'git', 'executor', 'frontend', 'compiler', 'prompt_engineer']
+2025-09-09 16:01:10,427 - INFO - [Orchestrator] - Iniciando agentes de segundo plano...
+2025-09-09 16:01:10,427 - INFO - [Auditor] - Iniciando monitoramento...
+2025-09-09 16:01:10,427 - INFO - [Orchestrator] - Agente 'Auditor' está rodando em segundo plano.
+2025-09-09 16:01:10,428 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 16:01:25,469 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 16:01:40,485 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 16:01:55,543 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 16:02:08,591 - DEBUG - [PromptEngineer] - Analisando intenção do usuário: 'crie um programa para teste onde eu tenha que conseguir mover segurando o botão esquerdo do mouse um círculo por uma tela branca, criando todos os arquivos necessários para este projeto'
+2025-09-09 16:02:10,554 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 16:02:11,271 - INFO - [Orchestrator] - Intenção detectada: BUILD, Parâmetros: {'description': 'um programa para teste onde eu possa mover um círculo por uma tela branca segurando o botão esquerdo do mouse, criando todos os arquivos necessários para este projeto'}
+2025-09-09 16:02:11,272 - DEBUG - [PromptEngineer] - Otimizando prompt de criação para: 'um programa para teste onde eu possa mover um círc...'
+2025-09-09 16:02:11,272 - INFO - [Arquiteto] - Recebido prompt otimizado para criação...
+2025-09-09 16:02:18,948 - INFO - [Arquiteto] - Plano de criação gerado com sucesso.
+2025-09-09 16:02:18,948 - INFO - [Orchestrator] - Plano de criação gerado com sucesso.
+2025-09-09 16:02:18,948 - INFO - [BackendDev] - Agente de Backend ativado (Trabalhando em: /home/felipessoa/AGENTES_AUTONOMOS_DEV)
+2025-09-09 16:02:18,949 - INFO - [BackendDev] - Plano de desenvolvimento encontrado. Traduzindo para ações executáveis...
+2025-09-09 16:02:25,584 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 16:02:27,062 - INFO - [BackendDev] - Recebi 4 ações para executar.
+2025-09-09 16:02:27,062 - DEBUG - [BackendDev] - Executando ação 1/4: None com args None
+2025-09-09 16:02:27,062 - WARNING - [BackendDev] - Ação inválida ignorada: {'create_directory': {'path': 'mover_circulo'}}
+2025-09-09 16:02:27,062 - DEBUG - [BackendDev] - Executando ação 2/4: None com args None
+2025-09-09 16:02:27,063 - WARNING - [BackendDev] - Ação inválida ignorada: {'create_file': {'path': 'mover_circulo/main.py', 'content': '# coding=utf-8\nimport pygame\nimport utils\n\n# Inicialização do Pygame\npygame.init()\n\n# Configurações da tela\nscreen_width = 800\nscreen_height = 600\nscreen = pygame.display.set_mode((screen_width, screen_height))\npygame.display.set_caption("Mover Círculo")\n\n# Cores\nwhite = (255, 255, 255)\nblack = (0, 0, 0)\n\n# Círculo\ncircle_radius = 20\ncircle_x = screen_width // 2\ncircle_y = screen_height // 2\ndragging = False\n\n# Loop principal\nrunning = True\nwhile running:\n    for event in pygame.event.get():\n        if event.type == pygame.QUIT:\n            running = False\n        elif event.type == pygame.MOUSEBUTTONDOWN:\n            if event.button == 1:\n                if utils.distance(event.pos, (circle_x, circle_y)) <= circle_radius:\n                    dragging = True\n        elif event.type == pygame.MOUSEBUTTONUP:\n            if event.button == 1:\n                dragging = False\n        elif event.type == pygame.MOUSEMOTION:\n            if dragging:\n                circle_x = event.pos[0]\n                circle_y = event.pos[1]\n\n\n    # Desenho na tela\n    screen.fill(white)\n    pygame.draw.circle(screen, black, (circle_x, circle_y), circle_radius)\n    pygame.display.flip()\n\npygame.quit()\n'}}
+2025-09-09 16:02:27,063 - DEBUG - [BackendDev] - Executando ação 3/4: None com args None
+2025-09-09 16:02:27,063 - WARNING - [BackendDev] - Ação inválida ignorada: {'create_file': {'path': 'mover_circulo/utils.py', 'content': 'import math\n\ndef distance(p1, p2):\n    return math.sqrt((p1[0] - p2[0])**2 + (p1[1] - p2[1])**2)\n'}}
+2025-09-09 16:02:27,063 - DEBUG - [BackendDev] - Executando ação 4/4: None com args None
+2025-09-09 16:02:27,063 - WARNING - [BackendDev] - Ação inválida ignorada: {'execute_shell': {'command_line': 'pip install pygame'}}
+2025-09-09 16:02:27,063 - INFO - [Orchestrator] - Backend concluiu a execução do plano de criação.
+2025-09-09 16:02:40,599 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 16:02:55,647 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 16:03:10,664 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 16:03:25,691 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 16:03:40,711 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 16:03:55,729 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 16:04:10,748 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 16:04:25,761 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 16:04:40,801 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 16:04:55,812 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 16:05:10,706 - DEBUG - [PromptEngineer] - Analisando intenção do usuário: 'modifique o arquivo src/agents/backend_agent.py "A tarefa é tornar o método '_execute_actions' mais flexível para aceitar um formato de JSON alternativo. Dentro do loop 'for action in action_list', adicione uma lógica de verificação. Se as chaves 'command' e 'args' não forem encontradas, verifique se a ação (que é um dicionário) tem exatamente uma chave. Se tiver, use essa chave como o 'command' e o valor dela como os 'args'. Se nenhuma dessas condições for atendida, então registre a ação como inválida."'
+2025-09-09 16:05:10,849 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 16:05:12,795 - INFO - [Orchestrator] - Intenção detectada: MODIFY, Parâmetros: {'file_path': 'src/agents/backend_agent.py', 'description': "Tornar o método '_execute_actions' mais flexível para aceitar um formato de JSON alternativo. Dentro do loop 'for action in action_list', adicione uma lógica de verificação. Se as chaves 'command' e 'args' não forem encontradas, verifique se a ação (que é um dicionário) tem exatamente uma chave. Se tiver, use essa chave como o 'command' e o valor dela como os 'args'. Se nenhuma dessas condições for atendida, então registre a ação como inválida."}
+2025-09-09 16:05:12,795 - DEBUG - [PromptEngineer] - Otimizando prompt de modificação para: src/agents/backend_agent.py
+2025-09-09 16:05:12,796 - INFO - [Arquiteto] - Recebido prompt otimizado para modificação de: src/agents/backend_agent.py
+2025-09-09 16:05:25,863 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 16:05:28,403 - INFO - [Arquiteto] - Plano de modificação para src/agents/backend_agent.py gerado com sucesso.
+2025-09-09 16:05:28,403 - INFO - [Orchestrator] - Plano de modificação criado para src/agents/backend_agent.py.
+2025-09-09 16:05:28,403 - INFO - [BackendDev] - Agente de Backend ativado (Trabalhando em: /home/felipessoa/AGENTES_AUTONOMOS_DEV)
+2025-09-09 16:05:28,403 - INFO - [BackendDev] - Plano de desenvolvimento encontrado. Traduzindo para ações executáveis...
+2025-09-09 16:05:29,782 - INFO - [BackendDev] - Recebi 1 ações para executar.
+2025-09-09 16:05:29,783 - DEBUG - [BackendDev] - Executando ação 1/1: None com args None
+2025-09-09 16:05:29,783 - WARNING - [BackendDev] - Ação inválida ignorada: {'create_file': {'path': 'src/agents/backend_agent.py', 'content': ''}}
+2025-09-09 16:05:29,783 - INFO - [Orchestrator] - Backend concluiu a aplicação da modificação.
+2025-09-09 16:05:40,882 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 16:05:55,899 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 16:06:10,946 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 16:06:25,963 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 16:06:40,987 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 16:06:53,186 - DEBUG - [PromptEngineer] - Analisando intenção do usuário: 'modifique o arquivo src/agents/backend_agent.py "A tarefa é refatorar o método '_execute_actions' para usar um novo método de normalização. Crie um novo método privado chamado '_normalize_action(self, action)'. Este método deve receber um dicionário 'action' e retornar um tuple '(command, args)' no formato padrão. Dentro de '_normalize_action', ele deve verificar vários formatos possíveis: primeiro, o formato padrão com chaves 'command' e 'args'; segundo, um formato onde a chave do comando é a própria ação (ex: {'create_file': ...}); e terceiro, um formato que usa sinônimos como 'action' e 'parameters'. O método deve ser insensível a maiúsculas e minúsculas. Depois, no método '_execute_actions', substitua a lógica de parsing de 'command' e 'args' por uma única chamada a 'command, args = self._normalize_action(action)'. Se a normalização falhar (retornar None, None), a ação deve ser registrada como inválida."'
+2025-09-09 16:06:56,007 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 16:06:56,347 - INFO - [Orchestrator] - Intenção detectada: MODIFY, Parâmetros: {'file_path': 'src/agents/backend_agent.py', 'description': "Refatorar o método '_execute_actions' para usar um novo método de normalização. Criar um novo método privado chamado '_normalize_action(self, action)'. Este método deve receber um dicionário 'action' e retornar um tuple '(command, args)' no formato padrão. Dentro de '_normalize_action', ele deve verificar vários formatos possíveis: primeiro, o formato padrão com chaves 'command' e 'args'; segundo, um formato onde a chave do comando é a própria ação (ex: {'create_file': ...}); e terceiro, um formato que usa sinônimos como 'action' e 'parameters'. O método deve ser insensível a maiúsculas e minúsculas. Depois, no método '_execute_actions', substitua a lógica de parsing de 'command' e 'args' por uma única chamada a 'command, args = self._normalize_action(action)'. Se a normalização falhar (retornar None, None), a ação deve ser registrada como inválida."}
+2025-09-09 16:06:56,347 - DEBUG - [PromptEngineer] - Otimizando prompt de modificação para: src/agents/backend_agent.py
+2025-09-09 16:06:56,347 - INFO - [Arquiteto] - Recebido prompt otimizado para modificação de: src/agents/backend_agent.py
+2025-09-09 16:07:11,030 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 16:07:13,664 - INFO - [Arquiteto] - Plano de modificação para src/agents/backend_agent.py gerado com sucesso.
+2025-09-09 16:07:13,664 - INFO - [Orchestrator] - Plano de modificação criado para src/agents/backend_agent.py.
+2025-09-09 16:07:13,664 - INFO - [BackendDev] - Agente de Backend ativado (Trabalhando em: /home/felipessoa/AGENTES_AUTONOMOS_DEV)
+2025-09-09 16:07:13,664 - INFO - [BackendDev] - Plano de desenvolvimento encontrado. Traduzindo para ações executáveis...
+2025-09-09 16:07:14,812 - INFO - [BackendDev] - Recebi 1 ações para executar.
+2025-09-09 16:07:14,812 - DEBUG - [BackendDev] - Executando ação 1/1: None com args None
+2025-09-09 16:07:14,812 - WARNING - [BackendDev] - Ação inválida ignorada: {'create_file': {'path': 'src/agents/backend_agent.py', 'content': ''}}
+2025-09-09 16:07:14,812 - INFO - [Orchestrator] - Backend concluiu a aplicação da modificação.
+2025-09-09 16:07:26,054 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 16:07:41,084 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 16:07:56,118 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 16:08:06,701 - INFO - [Orchestrator] - Aguardando threads de segundo plano finalizarem...
+2025-09-09 16:08:07,127 - INFO - [Auditor] - Monitoramento encerrado.
+2025-09-09 16:08:10,790 - INFO - [Orchestrator] - Inicializando o Orquestrador...
+2025-09-09 16:08:10,790 - INFO - [BackendDev] - Operando no diretório raiz: '/home/felipessoa/AGENTES_AUTONOMOS_DEV'
+2025-09-09 16:08:10,790 - DEBUG - [Compiler] - Verificando instalação do PyInstaller...
+2025-09-09 16:08:11,116 - DEBUG - [Compiler] - PyInstaller já está instalado.
+2025-09-09 16:08:11,117 - INFO - [Orchestrator] - Agentes carregados: ['architect', 'backend', 'auditor', 'git', 'executor', 'frontend', 'compiler', 'prompt_engineer']
+2025-09-09 16:08:11,117 - INFO - [Orchestrator] - Iniciando agentes de segundo plano...
+2025-09-09 16:08:11,117 - INFO - [Auditor] - Iniciando monitoramento...
+2025-09-09 16:08:11,117 - INFO - [Orchestrator] - Agente 'Auditor' está rodando em segundo plano.
+2025-09-09 16:08:11,118 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 16:08:26,143 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 16:08:41,152 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 16:08:43,700 - DEBUG - [PromptEngineer] - Analisando intenção do usuário: 'crie um programa para teste onde eu tenha que conseguir mover segurando o botão esquerdo do mouse um círculo por uma tela branca, criando todos os arquivos necessários para este projeto'
+2025-09-09 16:08:45,469 - INFO - [Orchestrator] - Intenção detectada: BUILD, Parâmetros: {'description': 'um programa para teste onde eu possa mover um círculo em uma tela branca segurando o botão esquerdo do mouse, criando todos os arquivos necessários para este projeto'}
+2025-09-09 16:08:45,469 - DEBUG - [PromptEngineer] - Otimizando prompt de criação para: 'um programa para teste onde eu possa mover um círc...'
+2025-09-09 16:08:45,469 - INFO - [Arquiteto] - Recebido prompt otimizado para criação...
+2025-09-09 16:08:54,009 - INFO - [Arquiteto] - Plano de criação gerado com sucesso.
+2025-09-09 16:08:54,009 - INFO - [Orchestrator] - Plano de criação gerado com sucesso.
+2025-09-09 16:08:54,009 - INFO - [BackendDev] - Agente de Backend ativado (Trabalhando em: /home/felipessoa/AGENTES_AUTONOMOS_DEV)
+2025-09-09 16:08:54,010 - INFO - [BackendDev] - Plano de desenvolvimento encontrado. Traduzindo para ações executáveis...
+2025-09-09 16:08:56,175 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 16:09:04,603 - INFO - [BackendDev] - Recebi 3 ações para executar.
+2025-09-09 16:09:04,603 - DEBUG - [BackendDev] - Ação normalizada 1/3: create_directory com args {'path': 'mover_circulo'}
+2025-09-09 16:09:04,606 - INFO - [BackendDev] - Criado diretório: ./mover_circulo
+2025-09-09 16:09:04,606 - DEBUG - [BackendDev] - Ação normalizada 2/3: create_file com args {'path': 'mover_circulo/main.py', 'content': '# coding: utf-8\nimport pygame\nimport circle\n\n# Inicialização do Pygame\npygame.init()\n\n# Configurações da tela\nscreen_width = 800\nscreen_height = 600\nscreen = pygame.display.set_mode((screen_width, screen_height))\npygame.display.set_caption("Mover Círculo")\n\n# Cor de fundo (branco)\nwhite = (255, 255, 255)\n\n# Criação do círculo\nmy_circle = circle.Circle(screen, 50, (screen_width // 2, screen_height // 2))\n\n\n# Loop principal\nrunning = True\ndragging = False\nwhile running:\n    for event in pygame.event.get():\n        if event.type == pygame.QUIT:\n            running = False\n        elif event.type == pygame.MOUSEBUTTONDOWN:\n            if event.button == 1:\n                if my_circle.is_inside(event.pos):\n                    dragging = True\n                    offset_x = my_circle.x - event.pos[0]\n                    offset_y = my_circle.y - event.pos[1]\n\n        elif event.type == pygame.MOUSEBUTTONUP:\n            if event.button == 1:\n                dragging = False\n\n        elif event.type == pygame.MOUSEMOTION:\n            if dragging:\n                my_circle.x = event.pos[0] + offset_x\n                my_circle.y = event.pos[1] + offset_y\n\n\n    # Preenche a tela com branco\n    screen.fill(white)\n\n    # Desenha o círculo\n    my_circle.draw()\n\n    # Atualiza a tela\n    pygame.display.flip()\n\npygame.quit()\n'}
+2025-09-09 16:09:04,607 - INFO - [BackendDev] - Criado/Sobrescrito arquivo: ./mover_circulo/main.py
+2025-09-09 16:09:04,607 - DEBUG - [BackendDev] - Ação normalizada 3/3: create_file com args {'path': 'mover_circulo/circle.py', 'content': 'import pygame\n\nclass Circle:\n    def __init__(self, surface, radius, position):\n        self.surface = surface\n        self.radius = radius\n        self.x, self.y = position\n        self.color = (0, 0, 255) # Azul\n\n    def draw(self):\n        pygame.draw.circle(self.surface, self.color, (int(self.x), int(self.y)), self.radius)\n\n    def is_inside(self, pos):\n        distance = ((pos[0] - self.x)**2 + (pos[1] - self.y)**2)**0.5\n        return distance <= self.radius\n'}
+2025-09-09 16:09:04,607 - INFO - [BackendDev] - Criado/Sobrescrito arquivo: ./mover_circulo/circle.py
+2025-09-09 16:09:04,607 - INFO - [Orchestrator] - Backend concluiu a execução do plano de criação.
+2025-09-09 16:09:11,186 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 16:09:26,229 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 16:09:41,242 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 16:09:56,284 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 16:10:11,300 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 16:10:26,338 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 16:10:41,350 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 16:10:56,386 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 16:11:11,413 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 16:11:26,432 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 16:11:41,450 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 16:11:56,465 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 16:12:11,509 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 16:12:26,522 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 16:12:41,553 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 16:12:56,562 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 16:13:11,583 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 16:13:26,597 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 16:13:41,649 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 16:13:56,665 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 16:14:11,690 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 16:14:26,709 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 16:14:41,751 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 16:14:56,783 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 16:15:11,800 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 16:15:26,828 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 16:15:41,844 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 16:15:51,547 - DEBUG - [PromptEngineer] - Analisando intenção do usuário: 'limpe o diretório de trabalho, removendo a pasta 'generated_project', a pasta 'src' dentro do workspace, e o arquivo 'hello.py'. Mantenha as pastas 'bugs' e 'output'.'
+2025-09-09 16:15:52,941 - INFO - [Orchestrator] - Intenção detectada: MODIFY, Parâmetros: {'description': "limpar o diretório de trabalho, removendo a pasta 'generated_project', a pasta 'src' dentro do workspace, e o arquivo 'hello.py'. Manter as pastas 'bugs' e 'output'."}
+2025-09-09 16:15:56,891 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 16:16:11,904 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 16:16:26,936 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 16:16:41,949 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 16:16:56,984 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 16:17:11,999 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 16:17:17,740 - DEBUG - [PromptEngineer] - Analisando intenção do usuário: 'limpe o workspace, removendo a pasta 'generated_project', a pasta 'src' dentro do workspace, e o arquivo 'hello.py'. Mantenha as pastas 'bugs' e 'output'.'
+2025-09-09 16:17:19,093 - INFO - [Orchestrator] - Intenção detectada: MODIFY, Parâmetros: {'description': "limpar o workspace, removendo a pasta 'generated_project', a pasta 'src' dentro do workspace, e o arquivo 'hello.py'. Manter as pastas 'bugs' e 'output'."}
+2025-09-09 16:17:27,029 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 16:17:42,046 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 16:17:57,078 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 16:18:12,097 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 16:18:21,703 - DEBUG - [PromptEngineer] - Analisando intenção do usuário: 'modifique o arquivo src/agents/prompt_engineer_agent.py "No método 'analyze_user_intent', adicione mais exemplos ao 'intent_analysis_prompt' para melhorar a precisão. Especificamente, adicione um exemplo para o comando de limpeza que falhou, mapeando-o para a intenção 'RUN'. Exemplo: '- "limpe a pasta workspace deletando arquivos temporários" -> {"intent": "RUN", "params": {"command_to_execute": "rm workspace/*.tmp"}}'. Adicione também mais um exemplo claro para 'MODIFY' para reforçar que ele só deve ser usado para alterar o conteúdo de um arquivo específico."'
+2025-09-09 16:18:24,035 - INFO - [Orchestrator] - Intenção detectada: MODIFY, Parâmetros: {'file_path': 'src/agents/prompt_engineer_agent.py', 'description': 'No método \'analyze_user_intent\', adicione mais exemplos ao \'intent_analysis_prompt\' para melhorar a precisão. Especificamente, adicione um exemplo para o comando de limpeza que falhou, mapeando-o para a intenção \'RUN\'. Exemplo: \'- "limpe a pasta workspace deletando arquivos temporários" -> {"intent": "RUN", "params": {"command_to_execute": "rm workspace/*.tmp"}}\'. Adicione também mais um exemplo claro para \'MODIFY\' para reforçar que ele só deve ser usado para alterar o conteúdo de um arquivo específico.'}
+2025-09-09 16:18:24,036 - DEBUG - [PromptEngineer] - Otimizando prompt de modificação para: src/agents/prompt_engineer_agent.py
+2025-09-09 16:18:24,037 - INFO - [Arquiteto] - Recebido prompt otimizado para modificação de: src/agents/prompt_engineer_agent.py
+2025-09-09 16:18:27,113 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 16:18:39,661 - INFO - [Arquiteto] - Plano de modificação para src/agents/prompt_engineer_agent.py gerado com sucesso.
+2025-09-09 16:18:39,661 - INFO - [Orchestrator] - Plano de modificação criado para src/agents/prompt_engineer_agent.py.
+2025-09-09 16:18:39,661 - INFO - [BackendDev] - Agente de Backend ativado (Trabalhando em: /home/felipessoa/AGENTES_AUTONOMOS_DEV)
+2025-09-09 16:18:39,661 - INFO - [BackendDev] - Plano de desenvolvimento encontrado. Traduzindo para ações executáveis...
+2025-09-09 16:18:41,023 - INFO - [BackendDev] - Recebi 1 ações para executar.
+2025-09-09 16:18:41,023 - DEBUG - [BackendDev] - Ação normalizada 1/1: create_file com args {'path': 'src/agents/prompt_engineer_agent.py', 'content': ''}
+2025-09-09 16:18:41,026 - INFO - [BackendDev] - Criado/Sobrescrito arquivo: ./src/agents/prompt_engineer_agent.py
+2025-09-09 16:18:41,027 - INFO - [Orchestrator] - Backend concluiu a aplicação da modificação.
+2025-09-09 16:18:42,139 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 16:18:57,162 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 16:19:12,194 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 16:19:27,210 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 16:19:28,349 - INFO - [Orchestrator] - Aguardando threads de segundo plano finalizarem...
+2025-09-09 16:19:29,213 - INFO - [Auditor] - Monitoramento encerrado.
+2025-09-09 16:19:35,443 - INFO - [Orchestrator] - Inicializando o Orquestrador...
+2025-09-09 16:19:35,443 - INFO - [BackendDev] - Operando no diretório raiz: '/home/felipessoa/AGENTES_AUTONOMOS_DEV'
+2025-09-09 16:19:35,444 - DEBUG - [Compiler] - Verificando instalação do PyInstaller...
+2025-09-09 16:19:35,882 - DEBUG - [Compiler] - PyInstaller já está instalado.
+2025-09-09 16:19:35,882 - INFO - [Orchestrator] - Agentes carregados: ['architect', 'backend', 'auditor', 'git', 'executor', 'frontend', 'compiler', 'prompt_engineer']
+2025-09-09 16:19:35,882 - INFO - [Orchestrator] - Iniciando agentes de segundo plano...
+2025-09-09 16:19:35,883 - INFO - [Auditor] - Iniciando monitoramento...
+2025-09-09 16:19:35,883 - INFO - [Orchestrator] - Agente 'Auditor' está rodando em segundo plano.
+2025-09-09 16:19:35,883 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 16:19:49,754 - DEBUG - [PromptEngineer] - Analisando intenção do usuário: 'limpe o workspace, removendo a pasta 'generated_project', a pasta 'src' dentro do workspace, e o arquivo 'hello.py'.'
+2025-09-09 16:19:50,899 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 16:19:51,217 - INFO - [Orchestrator] - Intenção detectada: RUN, Parâmetros: {'command_to_execute': 'rm -r generated_project && rm -r src && rm hello.py'}
+2025-09-09 16:19:51,217 - INFO - [Executor] - Recebido pedido para executar comando: 'rm -r generated_project && rm -r src && rm hello.py'
+2025-09-09 16:19:51,217 - DEBUG - [SecurityAgent] - Analisando comando: 'rm -r generated_project && rm -r src && rm hello.py'
+2025-09-09 16:19:51,217 - DEBUG - [SecurityAgent] - Comando aprovado como seguro.
+2025-09-09 16:19:51,217 - INFO - [Executor] - Comando aprovado. Executando: 'rm -r generated_project && rm -r src && rm hello.py'
+2025-09-09 16:19:51,221 - ERROR - [Executor] - Erro de subprocesso ao executar 'rm -r generated_project && rm -r src && rm hello.py': rm: cannot remove 'generated_project': No such file or directory
+
+2025-09-09 16:20:05,928 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 16:20:20,945 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 16:20:35,962 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 16:20:50,989 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 16:20:54,660 - DEBUG - [PromptEngineer] - Analisando intenção do usuário: 'modifique o AuditorAgent em src/agents/auditor_agent.py para que, em seu método 'run', ele verifique se existe um arquivo chamado 'plan.md' na pasta 'workspace'. Se o arquivo existir por mais de 2 minutos, o agente deve criar um ticket de bug em 'workspace/bugs/stale_plan.md' com a mensagem 'O arquivo plan.md está obsoleto e pode indicar que um processo falhou. Recomenda-se a remoção.''
+2025-09-09 16:20:57,099 - INFO - [Orchestrator] - Intenção detectada: MODIFY, Parâmetros: {'file_path': 'src/agents/auditor_agent.py', 'description': "No método 'run' do AuditorAgent, verificar se o arquivo 'workspace/plan.md' existe e se foi modificado pela última vez há mais de 2 minutos. Se essas condições forem verdadeiras, criar um arquivo 'workspace/bugs/stale_plan.md' com o conteúdo: 'O arquivo plan.md está obsoleto e pode indicar que um processo falhou. Recomenda-se a remoção.'"}
+2025-09-09 16:20:57,100 - DEBUG - [PromptEngineer] - Otimizando prompt de modificação para: src/agents/auditor_agent.py
+2025-09-09 16:20:57,100 - INFO - [Arquiteto] - Recebido prompt otimizado para modificação de: src/agents/auditor_agent.py
+2025-09-09 16:21:05,671 - INFO - [Arquiteto] - Plano de modificação para src/agents/auditor_agent.py gerado com sucesso.
+2025-09-09 16:21:05,672 - INFO - [Orchestrator] - Plano de modificação criado para src/agents/auditor_agent.py.
+2025-09-09 16:21:05,673 - INFO - [BackendDev] - Agente de Backend ativado (Trabalhando em: /home/felipessoa/AGENTES_AUTONOMOS_DEV)
+2025-09-09 16:21:05,673 - INFO - [BackendDev] - Plano de desenvolvimento encontrado. Traduzindo para ações executáveis...
+2025-09-09 16:21:06,001 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 16:21:09,101 - INFO - [BackendDev] - Recebi 1 ações para executar.
+2025-09-09 16:21:09,102 - DEBUG - [BackendDev] - Ação normalizada 1/1: create_file com args {'path': 'src/agents/auditor_agent.py', 'content': '# Novo Conteúdo Completo\n\n# Aqui você deve colar o código completo que substituirá o arquivo.\n# Este exemplo apenas ilustra a estrutura.\n\nimport logging\n\nlogger = logging.getLogger(__name__)\n\nclass AuditorAgent:\n    def __init__(self):\n        pass\n\n    def run_audit(self, data):\n        logger.info(f"Auditing data: {data}")\n        # Aqui você implementa a lógica de auditoria\n        return {"status": "ok"}\n'}
+2025-09-09 16:21:09,104 - INFO - [BackendDev] - Criado/Sobrescrito arquivo: ./src/agents/auditor_agent.py
+2025-09-09 16:21:09,104 - INFO - [Orchestrator] - Backend concluiu a aplicação da modificação.
+2025-09-09 16:21:21,032 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 16:21:36,044 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 16:21:51,085 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 16:22:06,098 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 16:22:21,128 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 16:22:36,139 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 16:22:51,163 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 16:23:06,176 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 16:23:21,198 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 16:23:36,212 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 16:23:51,230 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 16:24:06,248 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 16:24:21,264 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 16:24:36,283 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 16:24:51,298 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 16:25:06,320 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 16:25:21,330 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 16:25:36,355 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 16:25:51,365 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 16:26:06,391 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 16:26:21,402 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 16:26:36,425 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 16:26:51,441 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 16:26:55,295 - DEBUG - [PromptEngineer] - Analisando intenção do usuário: 'crie um novo agente funcional chamado 'PatcherAgent' em 'src/agents/patcher_agent.py'. Ele deve ter um método 'run(file_path, patch_content)'. Dentro do método, ele deve salvar o 'patch_content' em um arquivo temporário (ex: 'workspace/temp.patch'). Depois, ele deve usar o ExecutionAgent para executar o comando de sistema 'patch [file_path] [patch_file_path]'. Ele deve lidar com possíveis erros e limpar o arquivo de patch no final.'
+2025-09-09 16:26:58,758 - INFO - [Orchestrator] - Intenção detectada: BUILD, Parâmetros: {'description': "Criar um novo agente funcional chamado 'PatcherAgent' em 'src/agents/patcher_agent.py'. Ele deve ter um método 'run(file_path, patch_content)'. Dentro do método, ele deve salvar o 'patch_content' em um arquivo temporário (ex: 'workspace/temp.patch'). Depois, ele deve usar o ExecutionAgent para executar o comando de sistema 'patch [file_path] [patch_file_path]', onde [file_path] é o caminho do arquivo a ser corrigido e [patch_file_path] é o caminho para o arquivo de patch temporário. O agente deve lidar com potenciais erros durante a execução do comando 'patch' e garantir que o arquivo de patch temporário seja excluído após a execução, independentemente do sucesso ou falha da operação de patch."}
+2025-09-09 16:26:58,758 - DEBUG - [PromptEngineer] - Otimizando prompt de criação para: 'Criar um novo agente funcional chamado 'PatcherAge...'
+2025-09-09 16:26:58,758 - INFO - [Arquiteto] - Recebido prompt otimizado para criação...
+2025-09-09 16:27:06,464 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 16:27:06,524 - INFO - [Arquiteto] - Plano de criação gerado com sucesso.
+2025-09-09 16:27:06,524 - INFO - [Orchestrator] - Plano de criação gerado com sucesso.
+2025-09-09 16:27:06,524 - INFO - [BackendDev] - Agente de Backend ativado (Trabalhando em: /home/felipessoa/AGENTES_AUTONOMOS_DEV)
+2025-09-09 16:27:06,524 - INFO - [BackendDev] - Plano de desenvolvimento encontrado. Traduzindo para ações executáveis...
+2025-09-09 16:27:12,663 - INFO - [BackendDev] - Recebi 1 ações para executar.
+2025-09-09 16:27:12,663 - DEBUG - [BackendDev] - Ação normalizada 1/1: create_file com args {'path': 'src/agents/patcher_agent.py', 'content': 'import os\nimport tempfile\nimport shutil\nfrom src.core.functional_agent import FunctionalAgent\nfrom src.core.execution_agent import ExecutionAgent\nfrom src.core.logger import get_logger\n\nclass PatcherAgent(FunctionalAgent):\n    def __init__(self):\n        super().__init__(agent_name="Patcher")\n        self.logger = get_logger(self.agent_name)\n        self.execution_agent = ExecutionAgent()\n\n    def run(self, file_path, patch_content):\n        try:\n            with tempfile.NamedTemporaryFile(mode="w", delete=False, suffix=".patch", dir="workspace") as temp_patch_file:\n                temp_patch_file.write(patch_content)\n                temp_patch_file_path = temp_patch_file.name\n\n            command = f"patch {file_path} {temp_patch_file_path}"\n            self.logger.info(f"Executando comando: {command}")\n            \n            returncode, stdout, stderr = self.execution_agent.execute_command(command)\n\n            if returncode == 0:\n                self.logger.info(f"Patch aplicado com sucesso em {file_path}")\n                self.logger.debug(f"Stdout: {stdout}")\n            else:\n                self.logger.error(f"Erro ao aplicar patch em {file_path}")\n                self.logger.error(f"Stderr: {stderr}")\n                raise Exception(f"Erro ao aplicar patch: {stderr}")\n\n        except Exception as e:\n            self.logger.error(f"Erro durante a aplicação do patch: {e}", exc_info=True)\n            raise\n        finally:\n            if os.path.exists(temp_patch_file_path):\n                os.remove(temp_patch_file_path)\n                self.logger.debug(f"Arquivo de patch temporário \'{temp_patch_file_path}\' removido.")\n\n'}
+2025-09-09 16:27:12,669 - INFO - [BackendDev] - Criado/Sobrescrito arquivo: ./src/agents/patcher_agent.py
+2025-09-09 16:27:12,669 - INFO - [Orchestrator] - Backend concluiu a execução do plano de criação.
+2025-09-09 16:27:16,634 - DEBUG - [PromptEngineer] - Analisando intenção do usuário: 'modifique o 'PromptEngineerAgent' para que o método 'optimize_modification_prompt' peça ao LLM para gerar um 'arquivo de patch no formato diff unificado' em vez do código completo. A resposta do LLM deve ser apenas o bloco de código do patch.'
+2025-09-09 16:27:18,714 - INFO - [Orchestrator] - Intenção detectada: MODIFY, Parâmetros: {'file_path': 'src/agents/prompt_engineer_agent.py', 'description': "Modificar o método 'optimize_modification_prompt' do 'PromptEngineerAgent' para que ele instrua o LLM a gerar um patch no formato diff unificado em vez do código-fonte completo. A resposta do LLM deve conter apenas o bloco de código do patch diff."}
+2025-09-09 16:27:18,715 - DEBUG - [PromptEngineer] - Otimizando prompt de modificação para: src/agents/prompt_engineer_agent.py
+2025-09-09 16:27:18,715 - INFO - [Arquiteto] - Recebido prompt otimizado para modificação de: src/agents/prompt_engineer_agent.py
+2025-09-09 16:27:21,479 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 16:27:34,723 - INFO - [Arquiteto] - Plano de modificação para src/agents/prompt_engineer_agent.py gerado com sucesso.
+2025-09-09 16:27:34,723 - INFO - [Orchestrator] - Plano de modificação criado para src/agents/prompt_engineer_agent.py.
+2025-09-09 16:27:34,723 - INFO - [BackendDev] - Agente de Backend ativado (Trabalhando em: /home/felipessoa/AGENTES_AUTONOMOS_DEV)
+2025-09-09 16:27:34,723 - INFO - [BackendDev] - Plano de desenvolvimento encontrado. Traduzindo para ações executáveis...
+2025-09-09 16:27:36,514 - INFO - [BackendDev] - Recebi 1 ações para executar.
+2025-09-09 16:27:36,514 - DEBUG - [BackendDev] - Ação normalizada 1/1: create_file com args {'path': 'src/agents/prompt_engineer_agent.py', 'content': '# Novo Conteúdo Completo\n\n# Cole aqui o novo conteúdo do arquivo src/agents/prompt_engineer_agent.py\n'}
+2025-09-09 16:27:36,521 - INFO - [BackendDev] - Criado/Sobrescrito arquivo: ./src/agents/prompt_engineer_agent.py
+2025-09-09 16:27:36,521 - INFO - [Orchestrator] - Backend concluiu a aplicação da modificação.
+2025-09-09 16:27:36,521 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 16:27:43,618 - DEBUG - [PromptEngineer] - Analisando intenção do usuário: 'modifique o 'ArchitectAgent' para que o método 'plan_modification' não crie um plano em markdown. Em vez disso, ele deve pegar o patch gerado pelo LLM e salvar o conteúdo do patch diretamente em 'workspace/modification.patch'.'
+2025-09-09 16:27:45,497 - INFO - [Orchestrator] - Intenção detectada: MODIFY, Parâmetros: {'file_path': 'src/agents/architect_agent.py', 'description': "Modificar o método 'plan_modification' do 'ArchitectAgent' para que ele não gere mais um plano em Markdown. Em vez disso, ele deve receber o patch gerado pelo LLM e salvar o conteúdo do patch diretamente no arquivo 'workspace/modification.patch'."}
+2025-09-09 16:27:45,497 - DEBUG - [PromptEngineer] - Otimizando prompt de modificação para: src/agents/architect_agent.py
+2025-09-09 16:27:45,497 - INFO - [Arquiteto] - Recebido prompt otimizado para modificação de: src/agents/architect_agent.py
+2025-09-09 16:27:51,540 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 16:27:53,393 - INFO - [Arquiteto] - Plano de modificação para src/agents/architect_agent.py gerado com sucesso.
+2025-09-09 16:27:53,393 - INFO - [Orchestrator] - Plano de modificação criado para src/agents/architect_agent.py.
+2025-09-09 16:27:53,393 - INFO - [BackendDev] - Agente de Backend ativado (Trabalhando em: /home/felipessoa/AGENTES_AUTONOMOS_DEV)
+2025-09-09 16:27:53,393 - INFO - [BackendDev] - Plano de desenvolvimento encontrado. Traduzindo para ações executáveis...
+2025-09-09 16:27:54,964 - INFO - [BackendDev] - Recebi 1 ações para executar.
+2025-09-09 16:27:54,965 - DEBUG - [BackendDev] - Ação normalizada 1/1: create_file com args {'path': 'src/agents/architect_agent.py', 'content': '# Novo Conteúdo Completo\n\n# Cole aqui o novo conteúdo do arquivo src/agents/architect_agent.py\n'}
+2025-09-09 16:27:54,965 - INFO - [BackendDev] - Criado/Sobrescrito arquivo: ./src/agents/architect_agent.py
+2025-09-09 16:27:54,965 - INFO - [Orchestrator] - Backend concluiu a aplicação da modificação.
+2025-09-09 16:27:59,247 - DEBUG - [PromptEngineer] - Analisando intenção do usuário: 'modifique o 'Orchestrator' para que o método 'execute_modification_task' não chame mais o BackendAgent. Em vez disso, após o Arquiteto criar o 'workspace/modification.patch', o Orquestrador deve ler o conteúdo deste patch e chamar o novo 'PatcherAgent', passando o caminho do arquivo original e o conteúdo do patch.'
+2025-09-09 16:28:01,493 - INFO - [Orchestrator] - Intenção detectada: MODIFY, Parâmetros: {'file_path': 'src/core/orchestrator.py', 'description': "Modificar o método 'execute_modification_task' do 'Orchestrator' para que ele não chame mais o 'BackendAgent'. Em vez disso, depois que o 'ArchitectAgent' criar o arquivo 'workspace/modification.patch', o 'Orchestrator' deve ler o conteúdo deste arquivo e chamar o 'PatcherAgent', passando o caminho do arquivo original e o conteúdo do patch como argumentos."}
+2025-09-09 16:28:01,493 - DEBUG - [PromptEngineer] - Otimizando prompt de modificação para: src/core/orchestrator.py
+2025-09-09 16:28:01,493 - INFO - [Arquiteto] - Recebido prompt otimizado para modificação de: src/core/orchestrator.py
+2025-09-09 16:28:06,552 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 16:28:21,577 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 16:28:23,754 - INFO - [Arquiteto] - Plano de modificação para src/core/orchestrator.py gerado com sucesso.
+2025-09-09 16:28:23,754 - INFO - [Orchestrator] - Plano de modificação criado para src/core/orchestrator.py.
+2025-09-09 16:28:23,754 - INFO - [BackendDev] - Agente de Backend ativado (Trabalhando em: /home/felipessoa/AGENTES_AUTONOMOS_DEV)
+2025-09-09 16:28:23,754 - INFO - [BackendDev] - Plano de desenvolvimento encontrado. Traduzindo para ações executáveis...
+2025-09-09 16:28:25,218 - INFO - [BackendDev] - Recebi 1 ações para executar.
+2025-09-09 16:28:25,218 - DEBUG - [BackendDev] - Ação normalizada 1/1: create_file com args {'path': 'src/core/orchestrator.py', 'content': '# Novo Conteúdo Completo\n\n# Cole aqui o novo conteúdo do arquivo src/core/orchestrator.py\n'}
+2025-09-09 16:28:25,218 - INFO - [BackendDev] - Criado/Sobrescrito arquivo: ./src/core/orchestrator.py
+2025-09-09 16:28:25,219 - INFO - [Orchestrator] - Backend concluiu a aplicação da modificação.
+2025-09-09 16:28:36,591 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 16:28:51,629 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 16:29:06,643 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 16:29:21,708 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 16:29:36,724 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 16:29:51,805 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 16:30:06,817 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 16:30:21,893 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 16:30:36,918 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 16:30:51,966 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 16:31:06,984 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 16:31:22,000 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 16:31:37,016 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 16:31:52,035 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 16:32:07,064 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 16:32:22,077 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 16:32:37,118 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 16:32:52,133 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 16:33:07,184 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 16:33:22,199 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 16:33:37,252 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 16:33:52,266 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 16:34:07,277 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 16:34:22,344 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 16:34:37,365 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 16:34:52,405 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 16:35:07,423 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 16:35:22,456 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 16:35:37,473 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 16:35:52,513 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 16:36:07,544 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 16:36:22,553 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 16:36:37,602 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 16:36:52,616 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 16:37:07,664 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 16:37:22,675 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 16:37:37,741 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 16:37:52,753 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 16:38:07,795 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 16:38:22,812 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 16:38:37,838 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 16:38:52,856 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 16:39:07,871 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 16:39:22,894 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 16:39:37,908 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 16:39:52,938 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 16:40:07,951 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 16:40:22,976 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 16:40:37,985 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 16:40:53,010 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 16:41:08,019 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 16:41:23,040 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 16:41:38,050 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 16:41:53,073 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 16:42:08,087 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 16:42:23,107 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 16:42:38,122 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 16:42:53,140 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 16:43:08,164 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 16:43:23,177 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 16:43:38,205 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 16:43:53,216 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 16:44:08,251 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 16:44:23,262 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 16:44:38,303 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 16:44:53,312 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 16:45:08,361 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 16:45:23,373 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 16:45:38,404 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 16:45:53,416 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 16:46:08,426 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 16:46:23,455 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 16:46:38,483 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 16:46:53,502 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 16:47:08,528 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 16:47:23,542 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 16:47:38,593 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 16:47:53,607 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 16:48:08,623 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 16:48:23,641 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 16:48:38,654 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 16:48:53,674 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 16:49:08,687 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 16:49:23,713 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 16:49:38,725 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 16:49:53,744 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 16:50:08,759 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 16:50:23,785 - DEBUG - [Auditor] - Auditoria concluída. Log atualizado.
+2025-09-09 16:50:36,338 - DEBUG - [PromptEngineer] - Analisando intenção do usuário: 'commit e push'
+2025-09-09 16:50:37,888 - INFO - [Orchestrator] - Intenção detectada: COMMIT, Parâmetros: {'commit_message': 'Committing and pushing changes.'}
+2025-09-09 16:50:37,888 - INFO - [GitAgent] - Iniciando processo de versionamento com a mensagem: 'Committing and pushing changes.'
+2025-09-09 16:50:37,889 - INFO - [GitAgent] - Executando: 'git add .'

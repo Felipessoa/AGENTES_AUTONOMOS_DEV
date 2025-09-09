@@ -1,29 +1,46 @@
 # src/agents/execution_agent.py
 
 import subprocess
-# --- CORREÇÃO APLICADA AQUI ---
+# --- CORREÇÃO DE IMPORTAÇÃO APLICADA AQUI ---
 from src.core.functional_agent import FunctionalAgent
+from src.core.logger import get_logger
+# Importando o SecurityAgent para consulta
+from src.agents.security_agent import SecurityAgent
 
 class ExecutionAgent(FunctionalAgent):
     """
-    Agente funcional responsável por executar comandos de linha de comando.
+    Agente funcional responsável por executar comandos de linha de comando,
+    após verificação de segurança.
     """
     def __init__(self):
         super().__init__(agent_name="Executor")
+        self.logger = get_logger(self.agent_name)
+        # Cria uma instância do SecurityAgent para usar como validador
+        self.security_agent = SecurityAgent()
 
     def run(self, command_to_execute: str):
         """
-        Executa um comando de shell e imprime sua saída.
+        Analisa um comando e, se for seguro, o executa e imprime sua saída.
 
         Args:
             command_to_execute: A string completa do comando a ser executado.
         """
-        print(f"[{self.agent_name}] Executando comando: '{command_to_execute}'")
+        self.logger.info(f"Recebido pedido para executar comando: '{command_to_execute}'")
+
+        # --- Etapa de Verificação de Segurança ---
+        security_check = self.security_agent.analyze_command(command_to_execute)
+        
+        if not security_check.get("approved"):
+            reason = security_check.get("reason", "Motivo não especificado.")
+            print(f"[USER] ❌ Execução bloqueada pelo Agente de Segurança.")
+            print(f"[USER] Motivo: {reason}")
+            self.logger.warning(f"Execução do comando '{command_to_execute}' bloqueada. Motivo: {reason}")
+            return
+
+        # --- Etapa de Execução ---
+        self.logger.info(f"Comando aprovado. Executando: '{command_to_execute}'")
+        print(f"[USER] Comando aprovado. Executando...")
         try:
-            # Usando shlex.split para lidar com comandos complexos e evitar injeção de shell
-            # No entanto, para simplicidade e compatibilidade com o orchestrator atual,
-            # vamos manter shell=True, mas cientes do risco de segurança.
-            # Em um sistema de produção, a entrada seria validada.
             result = subprocess.run(
                 command_to_execute,
                 shell=True,
@@ -32,22 +49,24 @@ class ExecutionAgent(FunctionalAgent):
                 text=True,
                 encoding='utf-8'
             )
-            print(f"[{self.agent_name}] Comando executado com sucesso.")
+            
+            print(f"[USER] ✅ Comando executado com sucesso.")
             if result.stdout:
                 print("--- Saída (stdout) ---")
-                print(result.stdout)
+                print(result.stdout.strip())
             if result.stderr:
                 print("--- Erros (stderr) ---")
-                print(result.stderr)
+                print(result.stderr.strip())
             
         except subprocess.CalledProcessError as e:
-            print(f"[{self.agent_name}] Erro ao executar o comando.")
-            print(f"  - Código de saída: {e.returncode}")
+            print(f"[USER] ❌ Erro ao executar o comando (código de saída: {e.returncode}).")
             if e.stdout:
                 print("--- Saída (stdout) ---")
-                print(e.stdout)
+                print(e.stdout.strip())
             if e.stderr:
                 print("--- Erros (stderr) ---")
-                print(e.stderr)
+                print(e.stderr.strip())
+            self.logger.error(f"Erro de subprocesso ao executar '{command_to_execute}': {e.stderr}")
         except Exception as e:
-            print(f"[{self.agent_name}] Ocorreu um erro inesperado: {e}")
+            print(f"[USER] ❌ Ocorreu um erro inesperado durante a execução.")
+            self.logger.error(f"Erro inesperado ao executar '{command_to_execute}': {e}", exc_info=True)

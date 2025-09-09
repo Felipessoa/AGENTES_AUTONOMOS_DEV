@@ -2,7 +2,8 @@
 
 from dotenv import load_dotenv
 from src.core.orchestrator import Orchestrator
-from src.core.logger import setup_logger # Importa a função de setup
+from src.core.logger import setup_logger
+import logging
 
 def main():
     """
@@ -20,8 +21,7 @@ def main():
         
     except Exception as e:
         # Usando o logger para registrar o erro fatal
-        import logging
-        logging.getLogger("main").critical(f"Um erro fatal ocorreu na inicialização do sistema: {e}", exc_info=True)
+        logging.getLogger("main").critical(f"Um erro fatal ocorreu na inicialização: {e}", exc_info=True)
 
 if __name__ == "__main__":
     main()

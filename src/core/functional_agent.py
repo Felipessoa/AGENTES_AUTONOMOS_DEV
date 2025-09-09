@@ -2,29 +2,14 @@
 
 class FunctionalAgent:
     """
-    Uma classe base para agentes funcionais.
-
-    Esta classe serve como um modelo abstrato, garantindo que todas as subclasses
-    forneçam uma implementação para o método 'run'.
+    Classe base para todos os agentes funcionais (determinísticos).
     """
-
     def __init__(self, agent_name: str):
-        """
-        Inicializa o FunctionalAgent com um nome.
-
-        Args:
-            agent_name (str): O nome do agente, usado para identificação.
-        """
         self.agent_name = agent_name
 
-    def run(self):
+    def run(self, **kwargs):
         """
-        O principal ponto de entrada para a lógica do agente.
-
-        Este método deve ser sobrescrito por qualquer subclasse que herde
-        de FunctionalAgent.
-
-        Raises:
-            NotImplementedError: Se a subclasse não implementar este método.
+        O ponto de entrada principal para a lógica do agente.
+        Este método deve ser sobrescrito por cada agente filho.
         """
-        raise NotImplementedError("As subclasses devem implementar o método 'run'.")
+        raise NotImplementedError(f"O método 'run' deve ser implementado pela subclasse {self.__class__.__name__}.")
