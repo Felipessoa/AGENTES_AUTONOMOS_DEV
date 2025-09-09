@@ -4,24 +4,16 @@ import subprocess
 from src.core.functional_agent import FunctionalAgent
 from src.core.logger import get_logger
 
-# Este agente é responsável por todas as interações com o Git.
+# Agente responsável pelas operações Git.
 
 class GitAgent(FunctionalAgent):
-    """
-    Agente funcional responsável por interagir com o Git para
-    commitar e enviar alterações para o repositório remoto.
-    """
     def __init__(self):
         super().__init__(agent_name="GitAgent")
         self.logger = get_logger(self.agent_name)
 
     def _run_command(self, command: list[str]):
-        """Função auxiliar para executar um comando e tratar a saída."""
         try:
             self.logger.info(f"Executando: '{' '.join(command)}'")
-            # Usamos o ExecutionAgent para manter a segurança e consistência
-            # Mas para simplicidade aqui, vamos usar subprocess diretamente.
-            # Em uma versão futura, poderíamos injetar o ExecutionAgent.
             result = subprocess.run(command, check=True, capture_output=True, text=True, encoding='utf-8')
             self.logger.debug(f"Saída de '{' '.join(command)}': {result.stdout}")
             return True
@@ -35,9 +27,6 @@ class GitAgent(FunctionalAgent):
             return False
 
     def run(self, commit_message: str):
-        """
-        Executa a sequência de 'git add', 'git commit' e 'git push'.
-        """
         print(f"[USER] Iniciando processo de versionamento...")
         self.logger.info(f"Iniciando processo de versionamento com a mensagem: '{commit_message}'")
 

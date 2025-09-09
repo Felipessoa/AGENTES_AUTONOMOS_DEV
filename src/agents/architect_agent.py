@@ -1,5 +1,7 @@
 # src/agents/architect_agent.py
 
+import os
+import time
 from src.core.base_agent import BaseAgent
 from src.core.logger import get_logger
 
@@ -7,14 +9,15 @@ ARCHITECT_SYSTEM_PROMPT = """
 Você é um Arquiteto de Software Sênior e executor de planos.
 Sua função é receber um prompt extremamente detalhado e otimizado e executá-lo fielmente.
 Para CRIAÇÃO de novos arquivos, você gerará um plano em Markdown.
-Para MODIFICAÇÃO de arquivos, você gerará um patch no formato diff unificado.
+Para MODIFICAÇÃO de arquivos, você gerará o NOVO código completo com a alteração aplicada.
+Para CORREÇÃO DE BUGS, você gerará um plano em Markdown para resolver o problema descrito.
 Sua resposta deve ser sempre o artefato solicitado, sem explicações adicionais.
 """
 
 class ArchitectAgent(BaseAgent):
     """
-    O agente que recebe prompts otimizados e gera os planos de desenvolvimento
-    ou os patches de modificação.
+    Agente proativo que prioriza a correção de bugs e depois lida com
+    solicitações de usuário, gerando planos ou código modificado.
     """
     def __init__(self):
         super().__init__(
@@ -22,44 +25,93 @@ class ArchitectAgent(BaseAgent):
             system_prompt=ARCHITECT_SYSTEM_PROMPT
         )
         self.logger = get_logger(self.agent_name)
+        self.bug_dir = "workspace/bugs"
+        self.user_request_path = "workspace/user_request.json" # Mudança futura, por enquanto placeholder
+        os.makedirs(self.bug_dir, exist_ok=True)
+
+    def check_for_bugs(self):
+        """Verifica e prioriza tickets de bug, criando um plano de correção."""
+        try:
+            tickets = [f for f in os.listdir(self.bug_dir) if f.endswith(".md")]
+            if not tickets:
+                return False # Nenhum bug encontrado
+
+            ticket_file = tickets[0]
+            ticket_path = os.path.join(self.bug_dir, ticket_file)
+            self.logger.info(f"Ticket de bug encontrado! Priorizando a correção de: {ticket_file}")
+            
+            with open(ticket_path, 'r', encoding='utf-8') as f:
+                bug_description = f.read()
+            
+            os.remove(ticket_path) # Remove o ticket após a leitura
+            
+            # Lógica específica para o bug 'stale_plan.md'
+            if ticket_file == "stale_plan.md":
+                self.logger.info("Gerando plano de correção para 'stale_plan.md'.")
+                # O plano de correção é um plano simples para o Backend executar
+                correction_plan = """
+# Plano de Correção para plan.md Obsoleto
+
+## 1. Executar Comando de Limpeza
+- **Ação:** Executar um comando de shell para remover o arquivo obsoleto.
+- **Agente Responsável:** BackendAgent
+
+## Detalhes da Ação
+O BackendAgent deve traduzir a seguinte instrução para um comando JSON `execute_shell`: `rm workspace/plan.md`
+"""
+                self.write_to_workspace('plan.md', correction_plan)
+                return True # Bug encontrado e plano de correção criado
+            else:
+                self.logger.warning(f"Lógica de correção para o bug '{ticket_file}' ainda não implementada.")
+                return False
+
+        except Exception as e:
+            self.logger.error(f"Erro ao verificar tickets de bug: {e}", exc_info=True)
+            return False
 
     def plan_creation(self, optimized_prompt: str):
-        """Cria um plano para um NOVO artefato a partir de um prompt otimizado."""
+        """Cria um plano em Markdown para um NOVO artefato."""
         self.logger.info("Recebido prompt otimizado para criação...")
-        
         development_plan = self.think(optimized_prompt)
-        
         if development_plan and not development_plan.startswith("Erro:"):
             self.write_to_workspace('plan.md', development_plan)
             self.logger.info("Plano de criação gerado com sucesso.")
         else:
             raise Exception("Arquiteto falhou em gerar um plano de criação a partir do prompt otimizado.")
 
-    def plan_modification(self, optimized_prompt: str, file_path: str):
-        """
-        Gera um patch a partir de um prompt otimizado e o salva em um arquivo.
-        """
-        self.logger.info(f"Recebido prompt otimizado para gerar patch para: {file_path}")
-
-        patch_content = self.think(optimized_prompt)
-        
-        if patch_content and not patch_content.startswith("Erro:"):
-            # Limpa o conteúdo de possíveis blocos de código
-            if "```" in patch_content:
-                parts = patch_content.split('```')
+    def generate_modified_code(self, optimized_prompt: str) -> str:
+        """Gera e retorna o texto do código modificado a partir de um prompt otimizado."""
+        self.logger.info("Recebido prompt otimizado para gerar código modificado...")
+        new_full_code = self.think(optimized_prompt)
+        if new_full_code and not new_full_code.startswith("Erro:"):
+            if "```" in new_full_code:
+                parts = new_full_code.split('```')
                 if len(parts) > 1:
-                    patch_content = parts[1]
-                    # Remove a linguagem (ex: 'diff', 'patch') do início
-                    if patch_content.lower().startswith(('diff', 'patch')):
-                        patch_content = '\n'.join(patch_content.split('\n')[1:])
-                    patch_content = patch_content.strip()
-            
-            # Salva o patch em um arquivo, não um plano
-            self.write_to_workspace('modification.patch', patch_content)
-            self.logger.info(f"Patch para {file_path} gerado com sucesso.")
+                    new_full_code = parts[1]
+                    first_line, *rest_of_lines = new_full_code.split('\n')
+                    if first_line.lower().strip() in ['python', 'py']:
+                        new_full_code = '\n'.join(rest_of_lines)
+                    else:
+                        new_full_code = '\n'.join([first_line] + rest_of_lines)
+                    new_full_code = new_full_code.strip()
+            self.logger.info("Código modificado gerado com sucesso.")
+            return new_full_code
         else:
-            raise Exception("Arquiteto falhou em gerar o patch a partir do prompt otimizado.")
+            raise Exception("Arquiteto falhou em gerar o código modificado a partir do prompt otimizado.")
 
     def run(self, stop_event):
-        """O Arquiteto é puramente reativo e não precisa de um loop de fundo."""
-        pass
+        """Loop principal do agente Arquiteto. Roda em segundo plano para monitorar bugs."""
+        self.logger.info("Iniciando ciclo de monitoramento proativo...")
+        while not stop_event.is_set():
+            self.logger.debug("Verificando por tarefas de bug...")
+            
+            # A principal tarefa do Arquiteto em background é lidar com bugs
+            self.check_for_bugs()
+            
+            # Espera por 10 segundos antes da próxima verificação
+            for _ in range(10):
+                if stop_event.is_set():
+                    break
+                time.sleep(1)
+        
+        self.logger.info("Ciclo de monitoramento do Arquiteto encerrado.")

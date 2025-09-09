@@ -3,8 +3,9 @@
 import os
 import shlex
 import threading
+import time
+import diff_match_patch as dmp_module
 
-# Importando todos os agentes, incluindo o novo PatcherAgent
 from src.agents.architect_agent import ArchitectAgent
 from src.agents.backend_agent import BackendAgent
 from src.agents.auditor_agent import AuditorAgent
@@ -20,9 +21,6 @@ from src.core.logger import get_logger
 logger = get_logger("Orchestrator")
 
 class Orchestrator:
-    """
-    O cérebro do sistema. Gerencia o fluxo de trabalho seguro com o PatcherAgent.
-    """
     def __init__(self):
         logger.info("Inicializando o Orquestrador...")
         self.agents = {
@@ -42,86 +40,86 @@ class Orchestrator:
         logger.info(f"Agentes carregados: {list(self.agents.keys())}")
         print("Orquestrador pronto.")
 
+    def execute_backend_if_plan_exists(self):
+        """Verifica se um plano existe e, se sim, aciona o Backend."""
+        if os.path.exists('workspace/plan.md'):
+            logger.info("Plano detectado. Acionando Agente de Backend...")
+            print("\n[USER] 🤖 Plano de ação detectado (criado por um agente). Executando...")
+            backend_dev = self.agents.get("backend")
+            try:
+                backend_dev.run()
+                logger.info("Backend concluiu a execução do plano.")
+                print("[USER] ✅ Plano executado com sucesso.")
+            except Exception as e:
+                logger.error(f"Erro durante a execução do Backend: {e}", exc_info=True)
+                print(f"[USER] ❌ Erro ao executar o plano: {e}")
+            finally:
+                # Limpa o plano após a execução para evitar re-execução
+                if os.path.exists('workspace/plan.md'):
+                    os.remove('workspace/plan.md')
+
     def execute_creation_task(self, task_prompt: str):
-        # Este método permanece o mesmo
         print("\n[USER] Tarefa de construção recebida. Orquestrando agentes...")
-        
         prompt_engineer = self.agents.get("prompt_engineer")
         architect = self.agents.get("architect")
-        backend_dev = self.agents.get("backend")
-
         try:
-            print("[USER] Passo 1/3: Engenheiro de Prompt está otimizando a tarefa...")
+            print("[USER] Passo 1/2: Engenheiro de Prompt e Arquiteto estão planejando...")
             optimized_prompt = prompt_engineer.optimize_creation_prompt(task_prompt)
-            
-            print("[USER] Passo 2/3: Arquiteto está planejando a criação...")
             architect.plan_creation(optimized_prompt)
             logger.info("Plano de criação gerado com sucesso.")
         except Exception as e:
             print(f"[USER] ❌ Erro na etapa de planejamento: {e}")
             logger.error(f"Falha no planejamento da criação: {e}", exc_info=True)
             return
-
-        try:
-            print("[USER] Passo 3/3: Backend está construindo o(s) novo(s) arquivo(s)...")
-            backend_dev.run()
-            logger.info("Backend concluiu a execução do plano de criação.")
-        except Exception as e:
-            print(f"[USER] ❌ Erro na etapa de construção: {e}")
-            logger.error(f"Falha na construção: {e}", exc_info=True)
-            return
         
-        print("[USER] ✅ Tarefa de construção concluída com sucesso!")
+        # A execução do backend será pega pelo loop principal
+        print("[USER] Passo 2/2: Plano enviado para a fila de execução.")
+
 
     def execute_modification_task(self, file_path: str, description: str):
-        """
-        Executa o novo ciclo de MODIFICAÇÃO seguro, usando o PatcherAgent.
-        """
         print(f"\n[USER] Tarefa de modificação recebida para '{file_path}'.")
-        
         prompt_engineer = self.agents.get("prompt_engineer")
         architect = self.agents.get("architect")
         patcher = self.agents.get("patcher")
-
         try:
-            print("[USER] Passo 1/3: Lendo arquivo e otimizando a tarefa...")
+            print("[USER] Passo 1/3: Arquiteto está planejando a modificação...")
             with open(file_path, 'r', encoding='utf-8') as f:
                 existing_code = f.read()
-            
             optimized_prompt = prompt_engineer.optimize_modification_prompt(file_path, existing_code, description)
-            
-            print("[USER] Passo 2/3: Arquiteto está gerando o patch de modificação...")
-            architect.plan_modification(optimized_prompt, file_path)
-            logger.info(f"Patch criado para {file_path}.")
+            new_full_code = architect.generate_modified_code(optimized_prompt)
+            logger.info(f"Novo código gerado para {file_path}.")
+
+            print("[USER] Passo 2/3: Gerando patch de modificação seguro...")
+            dmp = dmp_module.diff_match_patch()
+            patches = dmp.patch_make(existing_code, new_full_code)
+            patch_text = dmp.patch_toText(patches)
+            if not patch_text:
+                print("[USER] ⚠️ O código gerado é idêntico ao original. Nenhuma modificação necessária.")
+                return
+            logger.info("Patch gerado com sucesso pelo Orquestrador.")
+
+            print("[USER] Passo 3/3: Patcher está aplicando a modificação cirúrgica...")
+            patcher.run(file_path=file_path, patch_content=patch_text)
+            logger.info("Patcher concluiu a aplicação da modificação.")
         except FileNotFoundError as e:
             print(f"[USER] ❌ Erro: {e}"); logger.error(f"Arquivo para modificar não encontrado: {file_path}"); return
-        except Exception as e:
-            print(f"[USER] ❌ Erro na etapa de planejamento da modificação: {e}"); logger.error(f"Falha no planejamento: {e}", exc_info=True); return
-
-        try:
-            print("[USER] Passo 3/3: Patcher está aplicando a modificação cirúrgica...")
-            with open("workspace/modification.patch", "r", encoding="utf-8") as f:
-                patch_content = f.read()
-            
-            patcher.run(file_path=file_path, patch_content=patch_content)
-            logger.info("Patcher concluiu a aplicação da modificação.")
         except Exception as e:
             print(f"[USER] ❌ Erro na etapa de aplicação da modificação: {e}"); logger.error(f"Falha na aplicação do patch: {e}", exc_info=True); return
         
         print(f"[USER] ✅ Modificação de '{file_path}' concluída com sucesso!")
 
     def start_background_agents(self):
-        # Este método permanece o mesmo
         logger.info("Iniciando agentes de segundo plano...")
-        auditor_agent = self.agents.get("auditor")
-        if auditor_agent:
-            thread = threading.Thread(target=auditor_agent.run, args=(self.stop_event,), daemon=True)
-            thread.start()
-            self.background_threads.append(thread)
-            logger.info(f"Agente '{auditor_agent.agent_name}' está rodando em segundo plano.")
+        background_agent_keys = ["auditor", "architect"]
+        for key in background_agent_keys:
+            agent = self.agents.get(key)
+            if agent:
+                thread = threading.Thread(target=agent.run, args=(self.stop_event,), daemon=True)
+                thread.start()
+                self.background_threads.append(thread)
+                logger.info(f"Agente '{agent.agent_name}' está rodando em segundo plano.")
 
     def interactive_shell(self):
-        # Este método permanece o mesmo
         self.start_background_agents()
         print("\n--- Shell de Orquestração Ativado ---")
         print("Fale comigo em linguagem natural. Para sair, digite 'exit' ou 'quit'.")
@@ -130,6 +128,9 @@ class Orchestrator:
 
         try:
             while not self.stop_event.is_set():
+                # O loop principal agora verifica por planos a cada ciclo
+                self.execute_backend_if_plan_exists()
+                
                 user_input = input("\nVocê> ")
                 if user_input.lower() in ["exit", "quit"]:
                     print("Encerrando o Orquestrador..."); self.stop_event.set(); break

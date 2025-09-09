@@ -1,0 +1,15 @@
+--- a/src/agents/auditor_agent.py
++++ b/src/agents/auditor_agent.py
+@@ -18,8 +18,11 @@
+     def check_stale_plan(self):
+         plan_path = "workspace/plan.md"
+         if os.path.exists(plan_path):
++            self.logger.debug("Verificando a idade do plan.md")
+             file_mod_time = datetime.fromtimestamp(os.path.getmtime(plan_path))
++            self.logger.debug(f"Tempo de modificação do arquivo: {file_mod_time}")
++            self.logger.debug(f"Tempo atual: {datetime.now()}")
+             if datetime.now() - file_mod_time > timedelta(minutes=2):
++                self.logger.info("Detectado plan.md obsoleto! Criando ticket de bug.")
+                 bug_path = os.path.join(self.bug_dir, "stale_plan.md")
+                 if not os.path.exists(bug_path): # Evita criar tickets duplicados
+                     self.logger.warning("Detectado 'plan.md' obsoleto. Criando ticket de bug.")

@@ -1,6 +1,3 @@
-# Novo Conteúdo Completo
-
-# Cole aqui o novo conteúdo do arquivo src/agents/prompt_engineer_agent.py
 # src/agents/prompt_engineer_agent.py
 
 import json
@@ -82,22 +79,18 @@ class PromptEngineerAgent(BaseAgent):
 
     def optimize_modification_prompt(self, file_path: str, existing_code: str, description: str) -> str:
         """
-        Otimiza um prompt para a MODIFICAÇÃO de um arquivo, solicitando um PATCH.
+        Otimiza um prompt para a MODIFICAÇÃO de um arquivo, solicitando o CÓDIGO COMPLETO.
         """
         self.logger.debug(f"Otimizando prompt de modificação para: {file_path}")
         
         optimized_prompt = f"""
-        Sua tarefa é gerar um patch para modificar um arquivo de código.
-        Gere um patch no formato 'diff unificado' que aplica a mudança solicitada.
-        O patch deve ser aplicável usando o comando 'patch'.
+        Sua tarefa é executar uma modificação cirúrgiica e literal no arquivo de código localizado em '{file_path}'.
 
-        **REGRAS E RESTRIÇÕES ESTRITAS:**
-        1.  Sua saída deve ser APENAS o patch. Não inclua explicações, comentários ou blocos de código markdown.
-        2.  O patch deve ser o mais minimalista possível, alterando apenas as linhas necessárias.
-        3.  As linhas de cabeçalho do diff (--- a/... e +++ b/...) devem usar o caminho do arquivo fornecido.
-
-        **O CAMINHO DO ARQUIVO É:**
-        {file_path}
+        **REGRAS E RESTRIÇÕES ESTRITAS (LEIA COM ATENÇÃO E SIGA-AS):**
+        1.  **NÃO ALTERE A LÓGICA EXISTENTE:** Você só deve aplicar a mudança solicitada. Não refatore, não renomeie variáveis, não adicione comentários e não altere o estilo do código que não esteja diretamente relacionado à tarefa.
+        2.  **NÃO ADICIONE NOVAS DEPENDÊNCIAS:** Não adicione novas declarações de 'import' que não foram explicitamente solicitadas.
+        3.  **SEJA LITERAL:** Aplique a mudança exatamente como descrita na solicitação.
+        4.  **FORNEÇA O CÓDIGO COMPLETO:** Sua resposta final deve ser o código-fonte completo e atualizado do arquivo, com a pequena alteração aplicada. Não forneça apenas o trecho alterado, explicações ou comentários.
 
         **O CÓDIGO ATUAL COMPLETO DO ARQUIVO É:**
         ---
@@ -107,6 +100,6 @@ class PromptEngineerAgent(BaseAgent):
         **A MODIFICAÇÃO SOLICITADA É A SEGUINTE:**
         "{description}"
 
-        Agora, gere o patch no formato diff unificado.
+        Agora, forneça o novo código completo para o arquivo, sem nenhum texto adicional.
         """
         return optimized_prompt
