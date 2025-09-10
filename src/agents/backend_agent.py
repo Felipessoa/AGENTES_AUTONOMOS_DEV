@@ -12,6 +12,7 @@ Você receberá o conteúdo de um arquivo 'plan.md' em formato Markdown.
 Sua tarefa é traduzir CADA passo do plano em uma sequência de comandos JSON.
 Responda APENAS com um script JSON contendo uma lista de comandos. Não adicione explicações, comentários ou qualquer texto fora do bloco JSON. A sua saída deve ser um JSON puro e válido.
 O formato preferencial é uma lista de objetos, cada um com as chaves "command" e "args". Ex: [{"command": "create_file", "args": {"path": "main.py", "content": "..."}}].
+Para o comando "execute_shell", o dicionário "args" deve conter a chave "command_line".
 """
 
 class BackendAgent(BaseAgent):
@@ -25,36 +26,42 @@ class BackendAgent(BaseAgent):
         self.logger.info(f"Operando no diretório raiz: '{os.path.abspath(self.project_root)}'")
 
     def _normalize_action(self, action: dict) -> tuple[str | None, dict | None]:
-        """
-        Aceita vários formatos de dicionário de ação e os converte para o formato padrão.
-        Retorna (command, args) ou (None, None) se a normalização falhar.
-        """
         if not isinstance(action, dict):
             return None, None
 
-        # Converte todas as chaves para minúsculas para tratamento insensível a maiúsculas
         action_lower = {k.lower(): v for k, v in action.items()}
 
-        # 1. Tenta o formato padrão: {"command": "...", "args": "..."}
-        # Também aceita sinônimos como "action" e "parameters"
         command_key = "command" if "command" in action_lower else "action"
         args_key = "args" if "args" in action_lower else "parameters"
         
+        command = None
+        args = None
+
         if command_key in action_lower and args_key in action_lower:
             command = action_lower[command_key]
             args = action_lower[args_key]
-            if isinstance(command, str) and isinstance(args, dict):
-                return command, args
-
-        # 2. Tenta o formato alternativo: {"create_file": {...}}
-        if len(action_lower) == 1:
+        elif len(action_lower) == 1:
             command = list(action_lower.keys())[0]
             args = list(action_lower.values())[0]
-            if isinstance(command, str) and isinstance(args, dict):
-                return command, args
 
-        # Se nenhum formato corresponder
-        return None, None
+        if not (isinstance(command, str) and isinstance(args, dict)):
+            return None, None
+            
+        # --- LÓGICA DE NORMALIZAÇÃO ADICIONAL PARA EXECUTE_SHELL ---
+        if command == "execute_shell":
+            if "command_line" not in args:
+                # Tenta encontrar o comando em outras chaves comuns
+                possible_keys = ["command", "command_to_execute", "shell_command"]
+                for key in possible_keys:
+                    if key in args:
+                        args["command_line"] = args.pop(key)
+                        break
+                else:
+                    # Se não encontrar nenhuma chave conhecida, assume que o único valor é o comando
+                    if len(args) == 1:
+                         args["command_line"] = list(args.values())[0]
+
+        return command, args
 
     def _execute_actions(self, actions_json_str: str):
         try:
@@ -68,16 +75,12 @@ class BackendAgent(BaseAgent):
 
             self.logger.info(f"Recebi {len(action_list)} ações para executar.")
             for i, action in enumerate(action_list, 1):
-                
-                # --- LÓGICA DE PARSING SUBSTITUÍDA PELA NORMALIZAÇÃO ---
                 command, args = self._normalize_action(action)
-                
                 self.logger.debug(f"Ação normalizada {i}/{len(action_list)}: {command} com args {args}")
 
                 if not command or not args:
                     self.logger.warning(f"Ação inválida ou em formato irreconhecível ignorada: {action}")
                     continue
-                # --- FIM DA SUBSTITUIÇÃO ---
 
                 if 'path' in args:
                     safe_relative_path = os.path.normpath(args['path']).lstrip('/\\')
@@ -105,8 +108,12 @@ class BackendAgent(BaseAgent):
                     self.logger.info(f"Adicionado conteúdo a: {args['path']}")
 
                 elif command == "execute_shell":
-                    self.logger.info(f"Executando no shell: '{args['command_line']}'")
-                    subprocess.run(args['command_line'], shell=True, check=True, cwd=self.project_root, capture_output=True, text=True)
+                    # Acesso seguro agora que a normalização garantiu a chave
+                    if 'command_line' in args:
+                        self.logger.info(f"Executando no shell: '{args['command_line']}'")
+                        subprocess.run(args['command_line'], shell=True, check=True, cwd=self.project_root, capture_output=True, text=True)
+                    else:
+                        self.logger.error(f"Ação 'execute_shell' recebida sem a chave 'command_line' nos argumentos: {args}")
                 
                 else:
                     self.logger.warning(f"Comando normalizado desconhecido ignorado: {command}")
@@ -120,17 +127,13 @@ class BackendAgent(BaseAgent):
 
     def run(self):
         self.logger.info(f"Agente de Backend ativado (Trabalhando em: {os.path.abspath(self.project_root)})")
-        
         development_plan = self.read_from_workspace('plan.md')
-        
         if not development_plan:
             self.logger.warning("'plan.md' não encontrado no workspace. Nada a fazer.")
             return
 
         self.logger.info("Plano de desenvolvimento encontrado. Traduzindo para ações executáveis...")
-        
         actions_json_str = self.think(development_plan)
-        
         if actions_json_str and not actions_json_str.startswith("Erro:"):
             self._execute_actions(actions_json_str)
         else:

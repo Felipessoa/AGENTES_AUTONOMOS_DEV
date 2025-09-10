@@ -8,7 +8,7 @@ from src.core.logger import get_logger
 ARCHITECT_SYSTEM_PROMPT = """
 Você é um Arquiteto de Software Sênior e executor de planos.
 Sua função é receber um prompt extremamente detalhado e otimizado e executá-lo fielmente.
-Para CRIAÇÃO de novos arquivos, você gerará um plano em Markdown.
+Para CRIAÇÃO de novos arquivos, você gerará um plano em Markdown detalhando a estrutura de pastas e o conteúdo de cada arquivo.
 Para MODIFICAÇÃO de arquivos, você gerará o NOVO código completo com a alteração aplicada.
 Para CORREÇÃO DE BUGS, você gerará um plano em Markdown para resolver o problema descrito.
 Sua resposta deve ser sempre o artefato solicitado, sem explicações adicionais.
@@ -48,7 +48,6 @@ class ArchitectAgent(BaseAgent):
             # Lógica específica para o bug 'stale_plan.md'
             if ticket_file == "stale_plan.md":
                 self.logger.info("Gerando plano de correção para 'stale_plan.md'.")
-                # O plano de correção é um plano simples para o Backend executar
                 correction_plan = """
 # Plano de Correção para plan.md Obsoleto
 
@@ -60,6 +59,8 @@ class ArchitectAgent(BaseAgent):
 O BackendAgent deve traduzir a seguinte instrução para um comando JSON `execute_shell`: `rm workspace/plan.md`
 """
                 self.write_to_workspace('plan.md', correction_plan)
+                # --- ADICIONADO: Sinaliza que o plano está pronto para execução ---
+                open("workspace/plan.ready", "w").close()
                 return True # Bug encontrado e plano de correção criado
             else:
                 self.logger.warning(f"Lógica de correção para o bug '{ticket_file}' ainda não implementada.")
@@ -75,7 +76,9 @@ O BackendAgent deve traduzir a seguinte instrução para um comando JSON `execut
         development_plan = self.think(optimized_prompt)
         if development_plan and not development_plan.startswith("Erro:"):
             self.write_to_workspace('plan.md', development_plan)
-            self.logger.info("Plano de criação gerado com sucesso.")
+            # --- ADICIONADO: Sinaliza que o plano está pronto para execução ---
+            open("workspace/plan.ready", "w").close()
+            self.logger.info("Plano de criação gerado e sinalizado como pronto.")
         else:
             raise Exception("Arquiteto falhou em gerar um plano de criação a partir do prompt otimizado.")
 
@@ -105,10 +108,8 @@ O BackendAgent deve traduzir a seguinte instrução para um comando JSON `execut
         while not stop_event.is_set():
             self.logger.debug("Verificando por tarefas de bug...")
             
-            # A principal tarefa do Arquiteto em background é lidar com bugs
             self.check_for_bugs()
             
-            # Espera por 10 segundos antes da próxima verificação
             for _ in range(10):
                 if stop_event.is_set():
                     break
