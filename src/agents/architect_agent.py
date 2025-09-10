@@ -5,12 +5,23 @@ import time
 from src.core.base_agent import BaseAgent
 from src.core.logger import get_logger
 
+# --- SYSTEM PROMPT APRIMORADO ---
 ARCHITECT_SYSTEM_PROMPT = """
 Você é um Arquiteto de Software Sênior e executor de planos.
-Sua função é receber um prompt extremamente detalhado e otimizado e executá-lo fielmente.
-Para CRIAÇÃO de novos arquivos, você gerará um plano em Markdown detalhando a estrutura de pastas e o conteúdo de cada arquivo.
-Para MODIFICAÇÃO de arquivos, você gerará o NOVO código completo com a alteração aplicada.
+Sua função é receber um prompt e executá-lo fielmente.
+
+Para CRIAÇÃO de novos arquivos, você gerará um plano em Markdown. Este plano DEVE seguir a seguinte estrutura:
+1.  **Resumo do Projeto**: Breve descrição.
+2.  **Estrutura de Arquivos**: Lista de todos os arquivos e pastas.
+3.  **Conteúdo dos Arquivos**: O conteúdo completo para cada arquivo de código.
+4.  **Gerenciamento de Dependências**: Esta etapa é OBRIGATÓRIA. Você DEVE incluir duas ações finais:
+    a. A criação de um arquivo 'requirements.txt' listando todas as bibliotecas externas necessárias (ex: pygame, flask).
+    b. Uma instrução explícita para o BackendAgent executar o comando `pip install -r requirements.txt` no diretório do projeto.
+
+Para MODIFICAÇÃO de arquivos, você receberá o código atual e uma instrução, e sua tarefa é fornecer o NOVO código completo com a alteração aplicada, seguindo regras estritas.
+
 Para CORREÇÃO DE BUGS, você gerará um plano em Markdown para resolver o problema descrito.
+
 Sua resposta deve ser sempre o artefato solicitado, sem explicações adicionais.
 """
 
@@ -26,7 +37,6 @@ class ArchitectAgent(BaseAgent):
         )
         self.logger = get_logger(self.agent_name)
         self.bug_dir = "workspace/bugs"
-        self.user_request_path = "workspace/user_request.json" # Mudança futura, por enquanto placeholder
         os.makedirs(self.bug_dir, exist_ok=True)
 
     def check_for_bugs(self):
@@ -34,7 +44,7 @@ class ArchitectAgent(BaseAgent):
         try:
             tickets = [f for f in os.listdir(self.bug_dir) if f.endswith(".md")]
             if not tickets:
-                return False # Nenhum bug encontrado
+                return False
 
             ticket_file = tickets[0]
             ticket_path = os.path.join(self.bug_dir, ticket_file)
@@ -43,25 +53,21 @@ class ArchitectAgent(BaseAgent):
             with open(ticket_path, 'r', encoding='utf-8') as f:
                 bug_description = f.read()
             
-            os.remove(ticket_path) # Remove o ticket após a leitura
+            os.remove(ticket_path)
             
-            # Lógica específica para o bug 'stale_plan.md'
             if ticket_file == "stale_plan.md":
                 self.logger.info("Gerando plano de correção para 'stale_plan.md'.")
                 correction_plan = """
 # Plano de Correção para plan.md Obsoleto
-
 ## 1. Executar Comando de Limpeza
 - **Ação:** Executar um comando de shell para remover o arquivo obsoleto.
 - **Agente Responsável:** BackendAgent
-
 ## Detalhes da Ação
 O BackendAgent deve traduzir a seguinte instrução para um comando JSON `execute_shell`: `rm workspace/plan.md`
 """
                 self.write_to_workspace('plan.md', correction_plan)
-                # --- ADICIONADO: Sinaliza que o plano está pronto para execução ---
                 open("workspace/plan.ready", "w").close()
-                return True # Bug encontrado e plano de correção criado
+                return True
             else:
                 self.logger.warning(f"Lógica de correção para o bug '{ticket_file}' ainda não implementada.")
                 return False
@@ -76,7 +82,6 @@ O BackendAgent deve traduzir a seguinte instrução para um comando JSON `execut
         development_plan = self.think(optimized_prompt)
         if development_plan and not development_plan.startswith("Erro:"):
             self.write_to_workspace('plan.md', development_plan)
-            # --- ADICIONADO: Sinaliza que o plano está pronto para execução ---
             open("workspace/plan.ready", "w").close()
             self.logger.info("Plano de criação gerado e sinalizado como pronto.")
         else:
@@ -107,12 +112,9 @@ O BackendAgent deve traduzir a seguinte instrução para um comando JSON `execut
         self.logger.info("Iniciando ciclo de monitoramento proativo...")
         while not stop_event.is_set():
             self.logger.debug("Verificando por tarefas de bug...")
-            
             self.check_for_bugs()
-            
             for _ in range(10):
                 if stop_event.is_set():
                     break
                 time.sleep(1)
-        
         self.logger.info("Ciclo de monitoramento do Arquiteto encerrado.")

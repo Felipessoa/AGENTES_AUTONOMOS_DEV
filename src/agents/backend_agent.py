@@ -24,44 +24,7 @@ class BackendAgent(BaseAgent):
         self.logger = get_logger(self.agent_name)
         self.project_root = project_root
         self.logger.info(f"Operando no diretório raiz: '{os.path.abspath(self.project_root)}'")
-
-    def _normalize_action(self, action: dict) -> tuple[str | None, dict | None]:
-        if not isinstance(action, dict):
-            return None, None
-
-        action_lower = {k.lower(): v for k, v in action.items()}
-
-        command_key = "command" if "command" in action_lower else "action"
-        args_key = "args" if "args" in action_lower else "parameters"
-        
-        command = None
-        args = None
-
-        if command_key in action_lower and args_key in action_lower:
-            command = action_lower[command_key]
-            args = action_lower[args_key]
-        elif len(action_lower) == 1:
-            command = list(action_lower.keys())[0]
-            args = list(action_lower.values())[0]
-
-        if not (isinstance(command, str) and isinstance(args, dict)):
-            return None, None
-            
-        # --- LÓGICA DE NORMALIZAÇÃO ADICIONAL PARA EXECUTE_SHELL ---
-        if command == "execute_shell":
-            if "command_line" not in args:
-                # Tenta encontrar o comando em outras chaves comuns
-                possible_keys = ["command", "command_to_execute", "shell_command"]
-                for key in possible_keys:
-                    if key in args:
-                        args["command_line"] = args.pop(key)
-                        break
-                else:
-                    # Se não encontrar nenhuma chave conhecida, assume que o único valor é o comando
-                    if len(args) == 1:
-                         args["command_line"] = list(args.values())[0]
-
-        return command, args
+        self.last_created_dir = None # <-- NOVO: Para rastrear o contexto
 
     def _execute_actions(self, actions_json_str: str):
         try:
@@ -74,6 +37,8 @@ class BackendAgent(BaseAgent):
                 raise TypeError("A resposta JSON do Backend LLM não foi uma lista de ações.")
 
             self.logger.info(f"Recebi {len(action_list)} ações para executar.")
+            self.last_created_dir = self.project_root # Reseta o contexto no início
+
             for i, action in enumerate(action_list, 1):
                 command, args = self._normalize_action(action)
                 self.logger.debug(f"Ação normalizada {i}/{len(action_list)}: {command} com args {args}")
@@ -87,6 +52,12 @@ class BackendAgent(BaseAgent):
                     absolute_path = os.path.join(self.project_root, safe_relative_path)
                     args['path'] = absolute_path
                     
+                    if command in ["create_file", "append_to_file", "create_directory"]:
+                        # Atualiza o último diretório de trabalho conhecido
+                        self.last_created_dir = os.path.dirname(absolute_path)
+                        if command == "create_directory":
+                             self.last_created_dir = absolute_path
+
                     if command in ["create_file", "append_to_file"]:
                         parent_dir = os.path.dirname(absolute_path)
                         if not os.path.exists(parent_dir):
@@ -108,10 +79,16 @@ class BackendAgent(BaseAgent):
                     self.logger.info(f"Adicionado conteúdo a: {args['path']}")
 
                 elif command == "execute_shell":
-                    # Acesso seguro agora que a normalização garantiu a chave
+                    # --- LÓGICA DE CWD INTELIGENTE ---
+                    working_dir = self.project_root
+                    if 'pip install -r' in args.get('command_line', ''):
+                        # Se for um pip install, assume que deve ser executado no último diretório criado
+                        working_dir = self.last_created_dir
+                        self.logger.info(f"Comando 'pip install' detectado. Mudando diretório de trabalho para: {working_dir}")
+                    
                     if 'command_line' in args:
-                        self.logger.info(f"Executando no shell: '{args['command_line']}'")
-                        subprocess.run(args['command_line'], shell=True, check=True, cwd=self.project_root, capture_output=True, text=True)
+                        self.logger.info(f"Executando no shell em '{working_dir}': '{args['command_line']}'")
+                        subprocess.run(args['command_line'], shell=True, check=True, cwd=working_dir, capture_output=True, text=True)
                     else:
                         self.logger.error(f"Ação 'execute_shell' recebida sem a chave 'command_line' nos argumentos: {args}")
                 
@@ -125,13 +102,39 @@ class BackendAgent(BaseAgent):
             self.logger.error(f"Erro ao executar ação: {e}", exc_info=True)
             raise
 
+    # ... (o resto do arquivo, incluindo _normalize_action e run, permanece o mesmo) ...
+    def _normalize_action(self, action: dict) -> tuple[str | None, dict | None]:
+        if not isinstance(action, dict): return None, None
+        action_lower = {k.lower(): v for k, v in action.items()}
+        command_key = "command" if "command" in action_lower else "action"
+        args_key = "args" if "args" in action_lower else "parameters"
+        command = None
+        args = None
+        if command_key in action_lower and args_key in action_lower:
+            command = action_lower[command_key]
+            args = action_lower[args_key]
+        elif len(action_lower) == 1:
+            command = list(action_lower.keys())[0]
+            args = list(action_lower.values())[0]
+        if not (isinstance(command, str) and isinstance(args, dict)): return None, None
+        if command == "execute_shell":
+            if "command_line" not in args:
+                possible_keys = ["command", "command_to_execute", "shell_command"]
+                for key in possible_keys:
+                    if key in args:
+                        args["command_line"] = args.pop(key)
+                        break
+                else:
+                    if len(args) == 1:
+                         args["command_line"] = list(args.values())[0]
+        return command, args
+
     def run(self):
         self.logger.info(f"Agente de Backend ativado (Trabalhando em: {os.path.abspath(self.project_root)})")
         development_plan = self.read_from_workspace('plan.md')
         if not development_plan:
             self.logger.warning("'plan.md' não encontrado no workspace. Nada a fazer.")
             return
-
         self.logger.info("Plano de desenvolvimento encontrado. Traduzindo para ações executáveis...")
         actions_json_str = self.think(development_plan)
         if actions_json_str and not actions_json_str.startswith("Erro:"):
