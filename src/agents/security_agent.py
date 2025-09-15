@@ -1,5 +1,6 @@
 # src/agents/security_agent.py
 
+# --- CORREÇÃO DE SINTAXE APLICADA AQUI ---
 from src.core.functional_agent import FunctionalAgent
 from src.core.logger import get_logger
 
@@ -10,8 +11,8 @@ class SecurityAgent(FunctionalAgent):
     def __init__(self):
         super().__init__(agent_name="SecurityAgent")
         self.logger = get_logger(self.agent_name)
-        # Lista de padrões de comandos perigosos. Pode ser expandida.
-        self.dangerous_patterns = [
+        # Lista de padrões que sempre exigirão confirmação do usuário
+        self.confirmation_patterns = [
             "rm -rf",
             "sudo",
             "mv /",
@@ -25,25 +26,17 @@ class SecurityAgent(FunctionalAgent):
         """
         Verifica um comando contra uma lista de padrões perigosos.
 
-        Args:
-            command_string: O comando a ser analisado.
-
         Returns:
-            Um dicionário com o status da aprovação e um motivo.
+            Um dicionário com o status da análise e um motivo.
         """
         self.logger.debug(f"Analisando comando: '{command_string}'")
         command_lower = command_string.lower().strip()
 
-        for pattern in self.dangerous_patterns:
+        for pattern in self.confirmation_patterns:
             if pattern in command_lower:
                 reason = f"Comando perigoso detectado (padrão: '{pattern}')."
-                self.logger.warning(f"Bloqueado comando perigoso: '{command_string}'. Motivo: {reason}")
-                return {"approved": False, "reason": reason}
+                self.logger.warning(f"Comando requer confirmação: '{command_string}'. Motivo: {reason}")
+                return {"status": "needs_confirmation", "reason": reason}
 
         self.logger.debug("Comando aprovado como seguro.")
-        return {"approved": True, "reason": "Comando parece seguro."}
-
-    def run(self):
-        """Este agente não é executado diretamente por um comando do usuário."""
-        self.logger.info("SecurityAgent não possui uma ação 'run' direta. Ele é chamado por outros agentes.")
-        pass
+        return {"status": "safe", "reason": "Comando parece seguro."}

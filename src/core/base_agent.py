@@ -14,7 +14,7 @@ class BaseAgent:
         
         self._configure_api_key()
         
-        self.generation_config = GenerationConfig(temperature=0.7)
+        self.generation_config = GenerationConfig(temperature=0.5)
         
         self.model = genai.GenerativeModel(
             model_name=model_name,

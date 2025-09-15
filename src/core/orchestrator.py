@@ -5,17 +5,18 @@ import shlex
 import threading
 import time
 import queue
+import json
 
-# Importando todos os agentes (PatcherAgent foi removido)
 from src.agents.architect_agent import ArchitectAgent
 from src.agents.backend_agent import BackendAgent
 from src.agents.auditor_agent import AuditorAgent
-from src.agents.git_agent import GitAgent
 from src.agents.execution_agent import ExecutionAgent
+from src.agents.librarian_agent import LibrarianAgent
+from src.agents.prompt_engineer_agent import PromptEngineerAgent
+from src.agents.git_agent import GitAgent
 from src.agents.compiler_agent import CompilerAgent
 from src.agents.frontend_agent import FrontendAgent
-from src.agents.prompt_engineer_agent import PromptEngineerAgent
-# from src.agents.patcher_agent import PatcherAgent # <-- REMOVIDO
+from src.agents.security_agent import SecurityAgent
 
 from src.core.logger import get_logger
 
@@ -23,111 +24,127 @@ logger = get_logger("Orchestrator")
 
 class Orchestrator:
     """
-    O cérebro do sistema. Gerencia o fluxo de trabalho de "Reescrita Segura".
+    Orquestrador v3.3. Lógica de caminhos centralizada no LibrarianAgent.
     """
     def __init__(self):
-        logger.info("Inicializando o Orquestrador...")
+        logger.info("Inicializando o Orquestrador v3.3...")
         self.agents = {
             "architect": ArchitectAgent(),
-            "backend": BackendAgent(project_root="."),
+            "backend_dev": BackendAgent(),
             "auditor": AuditorAgent(),
-            "git": GitAgent(),
             "executor": ExecutionAgent(),
-            "frontend": FrontendAgent(),
-            "compiler": CompilerAgent(),
+            "librarian": LibrarianAgent(),
             "prompt_engineer": PromptEngineerAgent(),
-            # "patcher": PatcherAgent() # <-- REMOVIDO
+            "git": GitAgent(),
+            "compiler": CompilerAgent(),
+            "frontend_dev": FrontendAgent(),
         }
         self.stop_event = threading.Event()
         self.background_threads = []
         self.user_input_queue = queue.Queue()
-        
+        self.project_in_progress = threading.Event()
+        self.prompt_needed = threading.Event()
+
         logger.info(f"Agentes carregados: {list(self.agents.keys())}")
         print("Orquestrador pronto.")
 
-    def execute_backend_if_plan_exists(self):
-        plan_ready_path = 'workspace/plan.ready'
-        plan_path = 'workspace/plan.md'
+    def process_plan_queue(self):
+        plans_queue_dir = "workspace/plans_queue"
+        if not os.path.exists(plans_queue_dir): return
 
-        if os.path.exists(plan_ready_path):
-            logger.info("Sinal 'plan.ready' detectado. Acionando Agente de Backend...")
-            print("\n[USER] 🤖 Plano de ação autônomo detectado. Executando...")
-            backend_dev = self.agents.get("backend")
-            try:
-                backend_dev.run()
-                logger.info("Backend concluiu a execução do plano.")
-                print("[USER] ✅ Plano executado com sucesso.")
-            except Exception as e:
-                logger.error(f"Erro durante a execução do Backend: {e}", exc_info=True)
-                print(f"[USER] ❌ Erro ao executar o plano: {e}")
-            finally:
-                if os.path.exists(plan_path):
-                    os.remove(plan_path)
-                if os.path.exists(plan_ready_path):
-                    os.remove(plan_ready_path)
-            return True
-        return False
+        plans = sorted([f for f in os.listdir(plans_queue_dir) if f.endswith(".json")])
+        if not plans: return
 
-    def execute_creation_task(self, task_prompt: str):
-        print("\n[USER] Tarefa de construção recebida. Orquestrando agentes...")
-        prompt_engineer = self.agents.get("prompt_engineer")
-        architect = self.agents.get("architect")
-        try:
-            print("[USER] Passo 1/2: Engenheiro de Prompt e Arquiteto estão planejando...")
-            optimized_prompt = prompt_engineer.optimize_creation_prompt(task_prompt)
-            architect.plan_creation(optimized_prompt)
-            logger.info("Plano de criação gerado com sucesso.")
-        except Exception as e:
-            print(f"[USER] ❌ Erro na etapa de planejamento: {e}")
-            logger.error(f"Falha no planejamento da criação: {e}", exc_info=True)
-            return
-        print("[USER] Passo 2/2: Plano enviado para a fila de execução.")
-
-    def execute_modification_task(self, file_path: str, description: str):
-        """
-        Executa o ciclo de MODIFICAÇÃO usando a estratégia de Reescrita Segura.
-        """
-        print(f"\n[USER] Tarefa de modificação recebida para '{file_path}'.")
+        self.project_in_progress.set()
+        plan_filename = plans[0]
+        plan_path = os.path.join(plans_queue_dir, plan_filename)
         
-        prompt_engineer = self.agents.get("prompt_engineer")
-        architect = self.agents.get("architect")
-        backend = self.agents.get("backend") # <-- Usaremos o Backend
+        logger.info(f"Plano '{plan_filename}' detectado na fila. Iniciando execução...")
+        print(f"\n[USER] 🤖 Plano de ação '{plan_filename}' detectado. Executando...")
+
+        plan_succeeded = True
+        project_id = "unknown_project"
+        project_description = "N/A"
 
         try:
-            # --- ETAPA 1: GERAR O NOVO CÓDIGO COMPLETO ---
-            print("[USER] Passo 1/2: Arquiteto está planejando a modificação...")
-            with open(file_path, 'r', encoding='utf-8') as f:
-                existing_code = f.read()
-            
-            optimized_prompt = prompt_engineer.optimize_modification_prompt(file_path, existing_code, description)
-            
-            new_full_code = architect.generate_modified_code(optimized_prompt)
-            logger.info(f"Novo código gerado para {file_path}.")
+            with open(plan_path, 'r', encoding='utf-8') as f:
+                plan = json.load(f)
 
-            # --- ETAPA 2: CRIAR PLANO DE REESCRITA E EXECUTAR ---
-            print("[USER] Passo 2/2: Backend está aplicando a modificação...")
+            project_id = plan.get("project_id", "unknown_project")
+            project_description = plan.get("description", "N/A")
+            tasks = plan.get("action_plan", [])
             
-            # Cria um plano simples para o backend executar
-            modification_plan = f"""
-# Plano de Modificação para {file_path}
-- **Ação:** Sobrescrever o arquivo `{file_path}` com o novo conteúdo.
-- **Novo Conteúdo:**
-"""
-            architect.write_to_workspace('plan.md', modification_plan)
-            # Sinaliza que o plano está pronto
-            open("workspace/plan.ready", "w").close()
-            logger.info("Plano de modificação enviado para a fila de execução.")
+            if not tasks:
+                logger.warning(f"Plano '{plan_filename}' encontrado, mas sem tarefas.")
+                print(f"[USER] ⚠️ Plano '{plan_filename}' encontrado, mas não continha tarefas claras.")
+                return
 
-        except FileNotFoundError as e:
-            print(f"[USER] ❌ Erro: {e}"); logger.error(f"Arquivo para modificar não encontrado: {file_path}"); return
+            total_tasks = len(tasks)
+            for i, task in enumerate(tasks, 1):
+                agent_name = task.get("agent", "").lower()
+                task_description = task.get("task", "")
+                
+                print(f"\n[USER] Executando Tarefa {i}/{total_tasks}: Atribuída a '{agent_name}'")
+                print(f"[USER] Descrição: {task_description}")
+                
+                agent = self.agents.get(agent_name)
+                if not agent:
+                    logger.error(f"Agente '{agent_name}' especificado no plano não encontrado.")
+                    print(f"[USER] ❌ Erro: Agente '{agent_name}' não existe no sistema.")
+                    plan_succeeded = False
+                    continue
+
+                try:
+                    if agent_name in ["backend_dev", "frontend_dev"]:
+                        target_file = task.get("target_file")
+                        if not target_file:
+                            logger.warning(f"Tarefa para '{agent_name}' sem 'target_file', pulando: {task_description}")
+                            print(f"[USER] ⚠️ Tarefa informativa para '{agent_name}' ignorada.")
+                            continue
+                        
+                        # --- LÓGICA DE CAMINHO DELEGADA AO BIBLIOTECÁRIO ---
+                        librarian = self.agents.get("librarian")
+                        final_path = librarian.get_project_path(project_id, target_file)
+                        
+                        agent.write_code(file_path=final_path, task_description=task_description)
+                    
+                    elif agent_name == "executor":
+                        command = task.get("command")
+                        if not command: raise ValueError("A tarefa do executor precisa de um 'command'.")
+                        command = command.replace("{project_id}", project_id)
+                        agent.run(command_to_execute=command)
+                    
+                    else:
+                        logger.warning(f"Lógica de execução para o agente '{agent_name}' não implementada.")
+                        print(f"[USER] ⚠️ Lógica para o agente '{agent_name}' não implementada.")
+
+                except Exception as e:
+                    print(f"[USER] ❌ Erro ao executar a tarefa {i}: {e}")
+                    logger.error(f"Falha na tarefa '{task_description}': {e}", exc_info=True)
+                    plan_succeeded = False
+                    break
+
+            if plan_succeeded:
+                print(f"\n[USER] ✅ Todas as tarefas do plano '{plan_filename}' foram processadas com sucesso.")
+                if project_id != "system_maintenance":
+                    librarian = self.agents.get("librarian")
+                    project_path = os.path.join("workspace", "output", project_id)
+                    librarian.register_project_in_manifest(project_id, project_path, project_description)
+            else:
+                print(f"\n[USER] ❌ O plano '{plan_filename}' foi processado com erros.")
+
         except Exception as e:
-            print(f"[USER] ❌ Erro durante a modificação: {e}"); logger.error(f"Falha na modificação: {e}", exc_info=True); return
-        
-        # A mensagem de sucesso será impressa pelo loop principal quando o backend terminar.
+            logger.error(f"Erro durante a execução do plano '{plan_filename}': {e}", exc_info=True)
+            print(f"[USER] ❌ Erro crítico ao executar o plano de projeto '{plan_filename}': {e}")
+        finally:
+            if os.path.exists(plan_path):
+                os.remove(plan_path)
+            self.project_in_progress.clear()
+            self.prompt_needed.set()
 
     def start_background_agents(self):
         logger.info("Iniciando agentes de segundo plano...")
-        background_agent_keys = ["auditor", "architect"]
+        background_agent_keys = ["librarian", "auditor", "architect"]
         for key in background_agent_keys:
             agent = self.agents.get(key)
             if agent:
@@ -137,78 +154,70 @@ class Orchestrator:
                 logger.info(f"Agente '{agent.agent_name}' está rodando em segundo plano.")
 
     def _handle_user_input(self):
-        """Função que roda em uma thread dedicada para capturar o input sem bloquear o loop principal."""
         while not self.stop_event.is_set():
             try:
-                user_input = input("\nVocê> ")
+                user_input = input()
+                if self.stop_event.is_set(): break
                 self.user_input_queue.put(user_input)
-            except (EOFError, KeyboardInterrupt):
-                self.stop_event.set()
-                break
+            except (EOFError, RuntimeError):
+                self.logger.info("Input stream fechado ou interrompido. Sinalizando encerramento.")
+                self.stop_event.set(); break
 
     def interactive_shell(self):
         self.start_background_agents()
-        print("\n--- Shell de Orquestração Ativado ---")
-        print("Fale comigo em linguagem natural. Para sair, digite 'exit' ou 'quit'.")
+        print("\n--- Shell de Orquestração v3.3 (Estável) Ativado ---")
+        print("Descreva o projeto que você quer construir.")
         
         input_thread = threading.Thread(target=self._handle_user_input, daemon=True)
         input_thread.start()
 
-        prompt_engineer = self.agents.get("prompt_engineer")
+        architect = self.agents.get("architect")
+        
+        self.prompt_needed.set()
 
         try:
             while not self.stop_event.is_set():
-                self.execute_backend_if_plan_exists()
+                self.process_plan_queue()
                 
+                if self.prompt_needed.is_set():
+                    print("\nVocê> ", end="", flush=True)
+                    self.prompt_needed.clear()
+
                 try:
                     user_input = self.user_input_queue.get_nowait()
+                    
+                    if not user_input.strip():
+                        self.prompt_needed.set()
+                        continue
+                    
                     if user_input.lower() in ["exit", "quit"]:
-                        print("Encerrando o Orquestrador..."); self.stop_event.set(); break
-                    if not user_input: continue
+                        print("Encerrando..."); self.stop_event.set(); break
+                    
+                    self.project_in_progress.set()
+                    self._cleanup_workspace()
 
-                    analyzed_command = prompt_engineer.analyze_user_intent(user_input)
-                    intent = analyzed_command.get("intent", "UNKNOWN").upper()
-                    params = analyzed_command.get("params", {})
-
-                    logger.info(f"Intenção detectada: {intent}, Parâmetros: {params}")
-
-                    if intent == "BUILD":
-                        if "description" in params: self.execute_creation_task(params["description"])
-                        else: print("[USER] Para construir algo, preciso de uma descrição do que fazer.")
+                    print(f"\n[USER] Solicitação recebida. Acionando o Arquiteto...")
+                    architect.create_master_plan(user_input)
                     
-                    elif intent == "MODIFY":
-                        if "file_path" in params and "description" in params: self.execute_modification_task(params["file_path"], params["description"])
-                        else: print("[USER] Para modificar um arquivo, preciso do caminho do arquivo e da descrição da mudança.")
-
-                    elif intent == "DESIGN":
-                        if "description" in params:
-                            print("[USER] Tarefa de design recebida. Acionando FrontendAgent...")
-                            self.agents.get("frontend").run(description=params["description"])
-                        else: print("[USER] Para criar um design, preciso de uma descrição.")
-                    
-                    elif intent == "COMMIT":
-                        if "commit_message" in params: self.agents.get("git").run(commit_message=params["commit_message"])
-                        else: print("[USER] Para commitar, preciso de uma mensagem de commit.")
-                    
-                    elif intent == "RUN":
-                        if "command_to_execute" in params: self.agents.get("executor").run(command_to_execute=params["command_to_execute"])
-                        else: print("[USER] Para executar um comando, preciso saber qual comando rodar.")
-                    
-                    elif intent == "COMPILE":
-                        if "script_path" in params: self.agents.get("compiler").run(script_path=params["script_path"])
-                        else: print("[USER] Para compilar, preciso do caminho do script.")
-                    
-                    else:
-                        print(f"[USER] Desculpe, não consegui entender sua solicitação. Tente reformular.")
-                
                 except queue.Empty:
                     pass
                 
                 time.sleep(0.5)
                 
         except KeyboardInterrupt:
-            print("\nEncerrando o Orquestrador (Ctrl+C)..."); self.stop_event.set()
+            print("\nEncerrando..."); self.stop_event.set()
         
         logger.info("Aguardando threads de segundo plano finalizem...")
         for thread in self.background_threads: thread.join(timeout=2)
         print("Sistema encerrado.")
+
+    def _cleanup_workspace(self):
+        """Limpa arquivos temporários de planejamento de execuções anteriores."""
+        logger.info("Limpando artefatos de planejamento do workspace...")
+        plans_queue_dir = "workspace/plans_queue"
+        if os.path.exists(plans_queue_dir):
+            for f in os.listdir(plans_queue_dir):
+                try:
+                    os.remove(os.path.join(plans_queue_dir, f))
+                except OSError as e:
+                    logger.error(f"Erro ao limpar a fila de planos: {e}")

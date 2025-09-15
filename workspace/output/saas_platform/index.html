@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Plataforma</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue@3"></script>
+  <style>
+    body { font-family: sans-serif; margin: 0; padding: 0; }
+    #app { display: flex; flex-direction: column; min-height: 100vh; }
+    nav { background: #f0f0f0; padding: 10px; }
+    nav a { margin: 0 10px; text-decoration: none; color: #333; }
+    main { padding: 20px; flex-grow: 1; }
+    footer { background: #333; color: #fff; padding: 10px; text-align: center; }
+    .container { max-width: 800px; margin: 0 auto; }
+
+    /* Form styles */
+    form { display: flex; flex-direction: column; }
+    label { margin-bottom: 5px; }
+    input, textarea { padding: 8px; margin-bottom: 10px; border: 1px solid #ccc; }
+    button { padding: 10px; background: #4CAF50; color: white; border: none; cursor: pointer; }
+  </style>
+</head>
+<body>
+  <div id="app">
+    <nav>
+      <div class="container">
+        <a href="#" @click.prevent="currentView = 'home'">Home</a>
+        <a href="#" @click.prevent="currentView = 'login'">Login</a>
+        <a href="#" @click.prevent="currentView = 'contact'">Contato</a>
+      </div>
+    </nav>
+
+    <main>
+      <div class="container">
+        <component :is="currentView"> </component>
+      </div>
+    </main>
+
+    <footer>
+      &copy; 2023 Minha Plataforma
+    </footer>
+  </div>
+
+  <script>
+    const Home = {
+      template: `<h1>Bem-vindo à Plataforma!</h1>`
+    }
+
+    const Login = {
+      template: `
+        <form @submit.prevent="login">
+          <h2>Login</h2>
+          <label for="email">Email:</label>
+          <input type="email" id="email" v-model="email">
+          <label for="password">Senha:</label>
+          <input type="password" id="password" v-model="password">
+          <button type="submit">Entrar</button>
+        </form>
+      `,
+      data() {
+        return {
+          email: '',
+          password: ''
+        }
+      },
+      methods: {
+        login() {
+          // Implementar lógica de login aqui
+          console.log('Email:', this.email, 'Senha:', this.password)
+        }
+      }
+    }
+
+    const Contact = {
+      template: `
+        <form @submit.prevent="submit">
+          <h2>Contato</h2>
+          <label for="name">Nome:</label>
+          <input type="text" id="name" v-model="name">
+          <label for="email">Email:</label>
+          <input type="email" id="email" v-model="email">
+          <label for="message">Mensagem:</label>
+          <textarea id="message" v-model="message"></textarea>
+          <button type="submit">Enviar</button>
+        </form>
+      `,
+      data() {
+        return {
+          name: '',
+          email: '',
+          message: ''
+        }
+      },
+      methods: {
+        submit() {
+          // Implementar lógica de envio aqui
+          console.log('Nome:', this.name, 'Email:', this.email, 'Mensagem:', this.message)
+        }
+      }
+    }
+
+    const app = Vue.createApp({
+      data() {
+        return {
+          currentView: 'home'
+        }
+      },
+      components: {
+        home: Home,
+        login: Login,
+        contact: Contact
+      }
+    })
+
+    app.mount('#app')
+  </script>
+</body>
+</html>

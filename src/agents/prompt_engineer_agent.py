@@ -7,7 +7,6 @@ from src.core.logger import get_logger
 PROMPT_ENGINEER_SYSTEM_PROMPT = """
 Você é um Engenheiro de Prompts Sênior, um especialista em criar instruções para Modelos de Linguagem Generativos (LLMs) que sejam claras, inequívocas e que minimizem a chance de erro ou 'alucinação'.
 Sua tarefa é receber uma solicitação de um usuário e um contexto (como código-fonte) e traduzir isso em um prompt perfeito para um LLM Arquiteto de Software.
-Você deve adicionar restrições explícitas e regras para garantir que o LLM Arquiteto seja obediente e realize apenas a tarefa solicitada.
 Sua saída deve ser APENAS o prompt otimizado ou o JSON de análise, sem nenhum outro texto, comentário ou explicação.
 """
 
@@ -33,25 +32,26 @@ class PromptEngineerAgent(BaseAgent):
         Analise a seguinte solicitação do usuário e a estruture em um objeto JSON.
         A solicitação é: "{user_input}"
 
-        As intenções (intent) válidas são: "BUILD", "MODIFY", "DESIGN", "COMMIT", "RUN", "COMPILE", "UNKNOWN".
-        Os parâmetros (params) dependem da intenção:
-        - BUILD: precisa de "description".
-        - MODIFY: precisa de "file_path" e "description". Usado APENAS para alterar o CONTEÚDO de um arquivo.
-        - DESIGN: precisa de "description".
-        - COMMIT: precisa de "commit_message".
-        - RUN: precisa de "command_to_execute". Usado para comandos de terminal como ls, rm, pip, etc.
-        - COMPILE: precisa de "script_path".
+        As intenções (intent) válidas são: "BUILD", "SELF_MODIFY", "RUN", "COMMIT", "UNKNOWN".
+        - "BUILD": Para criar um NOVO projeto no workspace.
+        - "SELF_MODIFY": Para modificar os arquivos de CÓDIGO-FONTE do próprio sistema (arquivos em 'src/').
+        - "RUN": Para executar comandos de terminal.
+        - "COMMIT": Para salvar o trabalho no git.
+
+        Os parâmetros (params) DEVERÃO usar as seguintes chaves:
+        - Para BUILD: "description"
+        - Para SELF_MODIFY: "file_path" (pode ser uma string ou uma lista de strings) e "description"
+        - Para RUN: "command_to_execute"
+        - Para COMMIT: "commit_message"
 
         Exemplos Detalhados:
         - "crie um app flask simples" -> {{"intent": "BUILD", "params": {{"description": "um app flask simples"}}}}
-        - "altere o arquivo src/main.py para adicionar um log" -> {{"intent": "MODIFY", "params": {{"file_path": "src/main.py", "description": "adicionar um log"}}}}
-        - "adicione um comentário no topo do orchestrator.py" -> {{"intent": "MODIFY", "params": {{"file_path": "src/core/orchestrator.py", "description": "adicionar um comentário no topo"}}}}
-        - "salve meu trabalho com a mensagem 'correção de bug'" -> {{"intent": "COMMIT", "params": {{"commit_message": "correção de bug"}}}}
-        - "execute o script de teste" -> {{"intent": "RUN", "params": {{"command_to_execute": "pytest"}}}}
-        - "limpe a pasta workspace deletando arquivos temporários" -> {{"intent": "RUN", "params": {{"command_to_execute": "rm workspace/*.tmp"}}}}
-        - "delete a pasta generated_project" -> {{"intent": "RUN", "params": {{"command_to_execute": "rm -r generated_project"}}}}
+        - "modifique o arquivo src/core/orchestrator.py para adicionar um log" -> {{"intent": "SELF_MODIFY", "params": {{"file_path": "src/core/orchestrator.py", "description": "adicionar um log"}}}}
+        - "altere o ExecutionAgent e o Orchestrator para pedir confirmação" -> {{"intent": "SELF_MODIFY", "params": {{"file_path": ["src/agents/execution_agent.py", "src/core/orchestrator.py"], "description": "pedir confirmação ao usuário para comandos perigosos"}}}}
+        - "execute o comando ls -l" -> {{"intent": "RUN", "params": {{"command_to_execute": "ls -l"}}}}
+        - "salve meu trabalho com a mensagem 'finalizei'" -> {{"intent": "COMMIT", "params": {{"commit_message": "finalizei"}}}}
 
-        Responda APENAS com o objeto JSON. Não adicione explicações.
+        Responda APENAS com o objeto JSON.
         """
         
         response_text = self.think(intent_analysis_prompt)
@@ -78,9 +78,6 @@ class PromptEngineerAgent(BaseAgent):
         return optimized_prompt
 
     def optimize_modification_prompt(self, file_path: str, existing_code: str, description: str) -> str:
-        """
-        Otimiza um prompt para a MODIFICAÇÃO de um arquivo, solicitando o CÓDIGO COMPLETO.
-        """
         self.logger.debug(f"Otimizando prompt de modificação para: {file_path}")
         
         optimized_prompt = f"""

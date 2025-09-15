@@ -2,119 +2,141 @@
 
 import os
 import time
+import json
+import re
 from src.core.base_agent import BaseAgent
 from src.core.logger import get_logger
 
-# --- SYSTEM PROMPT APRIMORADO ---
 ARCHITECT_SYSTEM_PROMPT = """
-Você é um Arquiteto de Software Sênior e executor de planos.
-Sua função é receber um prompt e executá-lo fielmente.
+Você é um Arquiteto de Software Sênior. Sua função é receber uma solicitação e criar um plano de desenvolvimento em JSON.
+Concentre-se em delegar tarefas de CODIFICAÇÃO para 'backend_dev' e 'frontend_dev' e tarefas de EXECUÇÃO DE COMANDOS para 'executor'.
+NÃO crie tarefas que sejam apenas informativas ou de status (ex: "Não há tarefas de frontend"). Se um agente não tem trabalho a fazer, simplesmente não crie uma tarefa para ele.
+NÃO crie tarefas para criar diretórios (`mkdir`) ou copiar arquivos (`cp`); a criação de arquivos e diretórios é uma consequência implícita das tarefas de codificação dos desenvolvedores.
 
-Para CRIAÇÃO de novos arquivos, você gerará um plano em Markdown. Este plano DEVE seguir a seguinte estrutura:
-1.  **Resumo do Projeto**: Breve descrição.
-2.  **Estrutura de Arquivos**: Lista de todos os arquivos e pastas.
-3.  **Conteúdo dos Arquivos**: O conteúdo completo para cada arquivo de código.
-4.  **Gerenciamento de Dependências**: Esta etapa é OBRIGATÓRIA. Você DEVE incluir duas ações finais:
-    a. A criação de um arquivo 'requirements.txt' listando todas as bibliotecas externas necessárias (ex: pygame, flask).
-    b. Uma instrução explícita para o BackendAgent executar o comando `pip install -r requirements.txt` no diretório do projeto.
-
-Para MODIFICAÇÃO de arquivos, você receberá o código atual e uma instrução, e sua tarefa é fornecer o NOVO código completo com a alteração aplicada, seguindo regras estritas.
-
-Para CORREÇÃO DE BUGS, você gerará um plano em Markdown para resolver o problema descrito.
-
-Sua resposta deve ser sempre o artefato solicitado, sem explicações adicionais.
+Sua saída DEVE ser um único bloco de código JSON válido, e nada mais.
+O JSON deve ter a seguinte estrutura:
+{
+  "project_id": "um-nome-unico-para-o-projeto",
+  "description": "Um resumo do que será construído.",
+  "action_plan": [
+    {
+      "agent": "backend_dev",
+      "task": "Crie o arquivo 'main.py' com a lógica principal...",
+      "target_file": "main.py"
+    },
+    {
+      "agent": "backend_dev",
+      "task": "Crie o arquivo 'requirements.txt' com as dependências.",
+      "target_file": "requirements.txt"
+    },
+    {
+      "agent": "executor",
+      "task": "Instale as dependências do projeto.",
+      "command": "pip install -r workspace/output/{project_id}/requirements.txt"
+    }
+  ]
+}
+Siga as regras do `project_map.md` fornecido no contexto.
 """
 
 class ArchitectAgent(BaseAgent):
-    """
-    Agente proativo que prioriza a correção de bugs e depois lida com
-    solicitações de usuário, gerando planos ou código modificado.
-    """
     def __init__(self):
         super().__init__(
             agent_name="Arquiteto",
             system_prompt=ARCHITECT_SYSTEM_PROMPT
         )
         self.logger = get_logger(self.agent_name)
+        self.project_map_path = "workspace/project_map.md"
+        self.plans_queue_dir = "workspace/plans_queue"
         self.bug_dir = "workspace/bugs"
+        os.makedirs(self.plans_queue_dir, exist_ok=True)
         os.makedirs(self.bug_dir, exist_ok=True)
 
-    def check_for_bugs(self):
-        """Verifica e prioriza tickets de bug, criando um plano de correção."""
+    def _save_plan_to_queue(self, plan_json_str: str):
         try:
-            tickets = [f for f in os.listdir(self.bug_dir) if f.endswith(".md")]
-            if not tickets:
-                return False
-
-            ticket_file = tickets[0]
-            ticket_path = os.path.join(self.bug_dir, ticket_file)
-            self.logger.info(f"Ticket de bug encontrado! Priorizando a correção de: {ticket_file}")
+            if "```" in plan_json_str:
+                plan_json_str = plan_json_str.split('```')[1].replace("json", "").strip()
             
-            with open(ticket_path, 'r', encoding='utf-8') as f:
-                bug_description = f.read()
+            json.loads(plan_json_str)
             
-            os.remove(ticket_path)
+            timestamp = int(time.time() * 1000)
+            plan_filename = f"plan_{timestamp}.json"
+            plan_path = os.path.join(self.plans_queue_dir, plan_filename)
             
-            if ticket_file == "stale_plan.md":
-                self.logger.info("Gerando plano de correção para 'stale_plan.md'.")
-                correction_plan = """
-# Plano de Correção para plan.md Obsoleto
-## 1. Executar Comando de Limpeza
-- **Ação:** Executar um comando de shell para remover o arquivo obsoleto.
-- **Agente Responsável:** BackendAgent
-## Detalhes da Ação
-O BackendAgent deve traduzir a seguinte instrução para um comando JSON `execute_shell`: `rm workspace/plan.md`
-"""
-                self.write_to_workspace('plan.md', correction_plan)
-                open("workspace/plan.ready", "w").close()
-                return True
-            else:
-                self.logger.warning(f"Lógica de correção para o bug '{ticket_file}' ainda não implementada.")
-                return False
+            with open(plan_path, "w", encoding="utf-8") as f:
+                f.write(plan_json_str)
+            self.logger.info(f"Plano enfileirado com sucesso como '{plan_filename}'.")
+        except (json.JSONDecodeError, IndexError) as e:
+            self.logger.error(f"O Arquiteto gerou um JSON inválido: {e}\nJSON Recebido: {plan_json_str}")
+            raise Exception("Arquiteto falhou em gerar um plano JSON válido.")
 
-        except Exception as e:
-            self.logger.error(f"Erro ao verificar tickets de bug: {e}", exc_info=True)
-            return False
+    def create_master_plan(self, user_request: str):
+        self.logger.info(f"Criando plano mestre para: '{user_request[:50]}...'")
+        try:
+            with open(self.project_map_path, 'r', encoding='utf-8') as f:
+                project_map_context = f.read()
+        except FileNotFoundError:
+            project_map_context = "Nenhum mapa de projeto encontrado."
 
-    def plan_creation(self, optimized_prompt: str):
-        """Cria um plano em Markdown para um NOVO artefato."""
-        self.logger.info("Recebido prompt otimizado para criação...")
-        development_plan = self.think(optimized_prompt)
-        if development_plan and not development_plan.startswith("Erro:"):
-            self.write_to_workspace('plan.md', development_plan)
-            open("workspace/plan.ready", "w").close()
-            self.logger.info("Plano de criação gerado e sinalizado como pronto.")
+        prompt_with_context = f"""
+        **Contexto de Arquitetura (Regras a Seguir):**
+        ---
+        {project_map_context}
+        ---
+        **Solicitação do Usuário:**
+        "{user_request}"
+        Agora, gere o plano mestre completo em formato JSON para esta solicitação.
+        """
+        master_plan_json_str = self.think(prompt_with_context)
+        if master_plan_json_str and not master_plan_json_str.startswith("Erro:"):
+            self._save_plan_to_queue(master_plan_json_str)
         else:
-            raise Exception("Arquiteto falhou em gerar um plano de criação a partir do prompt otimizado.")
+            self.logger.error("Falha ao gerar o plano mestre.")
+            raise Exception("Arquiteto falhou em gerar o plano mestre.")
 
-    def generate_modified_code(self, optimized_prompt: str) -> str:
-        """Gera e retorna o texto do código modificado a partir de um prompt otimizado."""
-        self.logger.info("Recebido prompt otimizado para gerar código modificado...")
-        new_full_code = self.think(optimized_prompt)
-        if new_full_code and not new_full_code.startswith("Erro:"):
-            if "```" in new_full_code:
-                parts = new_full_code.split('```')
-                if len(parts) > 1:
-                    new_full_code = parts[1]
-                    first_line, *rest_of_lines = new_full_code.split('\n')
-                    if first_line.lower().strip() in ['python', 'py']:
-                        new_full_code = '\n'.join(rest_of_lines)
-                    else:
-                        new_full_code = '\n'.join([first_line] + rest_of_lines)
-                    new_full_code = new_full_code.strip()
-            self.logger.info("Código modificado gerado com sucesso.")
-            return new_full_code
+    def create_correction_plan(self, ticket_file: str, bug_description: str):
+        self.logger.info(f"Gerando plano de correção para o bug: {ticket_file}")
+        correction_plan = None
+        
+        if ticket_file == "stale_plan.md":
+            correction_plan = {
+                "project_id": "system_maintenance",
+                "description": "Plano de correção para remover um arquivo plan.md obsoleto.",
+                "action_plan": [{"agent": "executor", "task": "Remover o arquivo workspace/plan.md obsoleto.", "command": "rm workspace/plan.md"}]
+            }
+        
+        elif ticket_file == "orphan_projects.md":
+            dirs_to_delete = re.findall(r"'([^']+)'", bug_description)
+            if dirs_to_delete:
+                commands = [f"rm -r workspace/output/{d}" for d in dirs_to_delete]
+                full_command = " && ".join(commands)
+                correction_plan = {
+                    "project_id": "system_maintenance",
+                    "description": "Limpar projetos órfãos do workspace.",
+                    "action_plan": [{"agent": "executor", "task": f"Remover os seguintes diretórios órfãos: {', '.join(dirs_to_delete)}", "command": full_command}]
+                }
+        
+        if correction_plan:
+            self._save_plan_to_queue(json.dumps(correction_plan, indent=2))
         else:
-            raise Exception("Arquiteto falhou em gerar o código modificado a partir do prompt otimizado.")
+            self.logger.warning(f"Lógica de correção para o bug '{ticket_file}' ainda não implementada.")
 
     def run(self, stop_event):
-        """Loop principal do agente Arquiteto. Roda em segundo plano para monitorar bugs."""
-        self.logger.info("Iniciando ciclo de monitoramento proativo...")
+        self.logger.info("Arquiteto iniciando ciclo de monitoramento proativo de bugs...")
         while not stop_event.is_set():
-            self.logger.debug("Verificando por tarefas de bug...")
-            self.check_for_bugs()
+            try:
+                tickets = [f for f in os.listdir(self.bug_dir) if f.endswith(".md")]
+                if tickets:
+                    ticket_file = tickets[0]
+                    ticket_path = os.path.join(self.bug_dir, ticket_file)
+                    with open(ticket_path, 'r', encoding='utf-8') as f:
+                        bug_description = f.read()
+                    os.remove(ticket_path)
+                    self.create_correction_plan(ticket_file, bug_description)
+            except Exception as e:
+                self.logger.error(f"Erro no ciclo de monitoramento de bugs do Arquiteto: {e}", exc_info=True)
+            
             for _ in range(10):
-                if stop_event.is_set():
-                    break
+                if stop_event.is_set(): break
                 time.sleep(1)
-        self.logger.info("Ciclo de monitoramento do Arquiteto encerrado.")
+        self.logger.info("Arquiteto encerrado.")

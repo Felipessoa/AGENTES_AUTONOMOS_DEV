@@ -1,0 +1,44 @@
+{
+    "pygame_bolinhas_interativas": {
+        "path": "workspace/output/pygame_bolinhas_interativas",
+        "description": "Um programa em Python com Pygame que cria uma tela branca onde o usu\u00e1rio pode criar, mover e remover bolinhas pretas com intera\u00e7\u00f5es do mouse e teclado.",
+        "status": "ACTIVE",
+        "created_at": "2025-09-15T22:22:58Z",
+        "last_accessed": "2025-09-15T22:22:58Z"
+    },
+    "pygame_bolinhas": {
+        "path": "workspace/output/pygame_bolinhas",
+        "description": "Um programa Pygame que permite criar, mover e remover bolinhas pretas em uma tela branca.",
+        "status": "ACTIVE",
+        "created_at": "2025-09-15T22:51:55Z",
+        "last_accessed": "2025-09-15T22:51:55Z"
+    },
+    "clean_workspace_output": {
+        "path": "workspace/output/clean_workspace_output",
+        "description": "Limpar o conte\u00fado da pasta 'output' dentro de 'workspace'.",
+        "status": "ACTIVE",
+        "created_at": "2025-09-15T22:52:38Z",
+        "last_accessed": "2025-09-15T22:52:38Z"
+    },
+    "saas_platform": {
+        "path": "workspace/output/saas_platform",
+        "description": "Plataforma SaaS com excelente UX/UI, p\u00e1gina de apresenta\u00e7\u00e3o moderna, login, contatos e \u00e1reas adicionais.",
+        "status": "ACTIVE",
+        "created_at": "2025-09-15T22:55:05Z",
+        "last_accessed": "2025-09-15T22:55:05Z"
+    },
+    "execute_saas_platform": {
+        "path": "workspace/output/execute_saas_platform",
+        "description": "Executar o arquivo app.py do projeto saas_platform.",
+        "status": "ACTIVE",
+        "created_at": "2025-09-15T22:55:55Z",
+        "last_accessed": "2025-09-15T22:55:55Z"
+    },
+    "commit_and_push": {
+        "path": "workspace/output/commit_and_push",
+        "description": "Commitar e enviar as altera\u00e7\u00f5es para o reposit\u00f3rio Git.",
+        "status": "ACTIVE",
+        "created_at": "2025-09-15T23:01:27Z",
+        "last_accessed": "2025-09-15T23:01:27Z"
+    }
+}

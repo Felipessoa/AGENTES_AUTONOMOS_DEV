@@ -4,52 +4,63 @@ import os
 from src.core.base_agent import BaseAgent
 from src.core.logger import get_logger
 
-FRONTEND_SYSTEM_PROMPT = """
-Você é um Desenvolvedor Frontend Sênior, um especialista em criar interfaces de usuário (UI) bonitas, funcionais e responsivas.
-Suas principais ferramentas são HTML5, CSS3 e JavaScript moderno (ES6+).
-Você tem um olho aguçado para o design, focando em layouts limpos, excelente experiência do usuário (UX) e acessibilidade.
-Sua tarefa é traduzir descrições de componentes de UI em um único arquivo HTML autocontido. O CSS e o JavaScript devem ser incluídos dentro do arquivo HTML usando as tags <style> e <script> para simplicidade.
-Responda APENAS com o código HTML completo. Não inclua explicações ou texto extra fora do bloco de código.
+FRONTEND_DEV_SYSTEM_PROMPT = """
+Você é um Desenvolvedor Frontend Sênior, um especialista em criar interfaces de usuário (UI) bonitas, funcionais e responsivas usando HTML, CSS e JavaScript moderno.
+Sua tarefa é receber uma instrução e escrever o código completo para um único arquivo (geralmente .html).
+O CSS e o JavaScript devem ser incluídos dentro do arquivo HTML usando as tags <style> e <script> para simplicidade, a menos que o plano especifique arquivos separados.
+Sua resposta deve ser APENAS o bloco de código. Não inclua explicações ou texto extra.
 """
 
 class FrontendAgent(BaseAgent):
     """
-    Agente cognitivo que projeta e gera código de frontend (HTML, CSS, JS).
+    Agente desenvolvedor cognitivo. Recebe tarefas do Arquiteto e escreve
+    o código de frontend correspondente.
     """
     def __init__(self):
         super().__init__(
             agent_name="FrontendDev",
-            system_prompt=FRONTEND_SYSTEM_PROMPT
+            system_prompt=FRONTEND_DEV_SYSTEM_PROMPT
         )
         self.logger = get_logger(self.agent_name)
-        self.output_path = "workspace/output/frontend"
-        os.makedirs(self.output_path, exist_ok=True)
 
-    def run(self, description: str):
+    def write_code(self, file_path: str, task_description: str):
         """
-        Gera o código de frontend com base em uma descrição e o salva em um arquivo.
-
-        Args:
-            description: Uma descrição em linguagem natural da UI a ser criada.
+        Gera o código de frontend para uma tarefa e o salva no arquivo.
         """
-        self.logger.info(f"Recebida tarefa de design: '{description[:50]}...'")
-        
-        try:
-            # Usar o método think() da classe base para gerar o código
-            html_code = self.think(description)
+        self.logger.info(f"Iniciando a tarefa de design para o caminho final: '{file_path}'")
+        self.logger.debug(f"Descrição da tarefa: {task_description}")
 
-            # Limpeza básica caso o LLM adicione marcadores de markdown
-            if html_code.strip().startswith("```html"):
-                html_code = html_code.strip()[7:-3].strip()
+        generated_code = self.think(task_description)
 
-            # Salvar o código gerado
-            file_path = os.path.join(self.output_path, "index.html")
-            with open(file_path, "w", encoding="utf-8") as f:
-                f.write(html_code)
-            
-            self.logger.info(f"Código de frontend gerado e salvo em: {file_path}")
-            print(f"[USER] ✅ Design concluído! Verifique o arquivo em '{file_path}'")
+        if generated_code and not generated_code.startswith("Erro:"):
+            if "```" in generated_code:
+                parts = generated_code.split('```')
+                if len(parts) > 1:
+                    code_block = parts[1]
+                    first_line, *rest_of_lines = code_block.split('\n')
+                    if first_line.lower().strip() in ['html', 'css', 'javascript', 'js']:
+                        generated_code = '\n'.join(rest_of_lines)
+                    else:
+                        generated_code = '\n'.join([first_line] + rest_of_lines)
+                    generated_code = generated_code.strip()
 
-        except Exception as e:
-            self.logger.error(f"Erro ao gerar o design: {e}", exc_info=True)
-            print(f"[USER] ❌ Erro durante o processo de design. Verifique 'logs/system_debug.log' para detalhes.")
+            try:
+                parent_dir = os.path.dirname(file_path)
+                os.makedirs(parent_dir, exist_ok=True)
+                
+                with open(file_path, "w", encoding="utf-8") as f:
+                    f.write(generated_code)
+                
+                self.logger.info(f"Código de frontend para '{file_path}' escrito com sucesso.")
+                return True
+            except Exception as e:
+                self.logger.error(f"Falha ao escrever o arquivo '{file_path}': {e}", exc_info=True)
+                return False
+        else:
+            self.logger.error(f"O LLM falhou em gerar o código de frontend para a tarefa: {task_description}")
+            return False
+
+    def run(self, stop_event):
+        """O FrontendAgent v3.0 é reativo."""
+        self.logger.info("FrontendDev em modo de espera (reativo).")
+        pass
